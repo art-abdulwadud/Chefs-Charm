@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
@@ -30,6 +31,12 @@ module.exports = {
         theme_color: '#ffcc00',
         display: 'standalone',
         icon: 'static/favicon.png'
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-postcss',
+      options: {
+        postCssPlugins: [require('autoprefixer')()]
       }
     }
   ]
