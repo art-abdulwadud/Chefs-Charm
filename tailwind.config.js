@@ -2,7 +2,6 @@
 module.exports = {
   mode: 'jit',
   darkMode: 'class',
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   content: [
     './src/pages/**/*.{js,jsx,ts,tsx}',
     './src/components/**/*.{js,jsx,ts,tsx}'

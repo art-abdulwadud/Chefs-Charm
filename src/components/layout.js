@@ -1,10 +1,12 @@
 import * as React from 'react';
 import 'animate.css/animate.min.css';
 import './layout.css';
+import NavBar from './navbar/NavBar';
 
 const Layout = ({ children }) => {
   return (
     <main>
+      <NavBar />
       {children}
     </main>
   );
