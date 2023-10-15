@@ -5,7 +5,7 @@ import Seo from '../components/seo';
 
 const IndexPage = () => (
   <Layout>
-    <h1>Hello world</h1>
+    <h1 className="opacity-0">.</h1>
   </Layout>
 );
 
