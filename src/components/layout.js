@@ -6,7 +6,7 @@ import NavBar from './navbar/NavBar';
 
 const Layout = ({ children }) => {
   return (
-    <main>
+    <main className="pattern-bg h-100vh">
       <NavBar />
       {children}
     </main>

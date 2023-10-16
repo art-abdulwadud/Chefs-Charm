@@ -4,10 +4,6 @@
   --color-primary: #7026b9;
   --color-code-bg: #fff4db;
   --color-code: #8a6534;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
   --font-lg: 18px;
   --font-md: 16px;
   --font-sm: 14px;
@@ -39,20 +35,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   color: var(--color-text);
-  font-family: sans-serif;
-  font-family: var(--font-sans);
+  font-family: 'Ubuntu', sans-serif;
   font-weight: normal;
   margin: 0;
   word-wrap: break-word;
 }
 
+.pattern-bg {
+  background-color: #e5e5f7;
+  opacity: 0.9;
+  background-image: radial-gradient(#FFCC66 0.55px, #e5e5f7 0.55px);
+  background-size: 11px 11px;
+}
+
 a {
   background-color: transparent;
   color: var(--color-primary);
-  text-decoration: none !important;
+  text-decoration: none;
   font-weight: 500;
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
   text-underline-offset: 2px;
 }
 
