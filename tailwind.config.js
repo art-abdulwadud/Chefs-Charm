@@ -13,7 +13,17 @@ module.exports = {
       md: '768px',
       sm: '480px'
     },
-    extend: {}
+    extend: {
+      animation: {
+        expandFromMiddle: 'expandFromMiddle 1s ease-out'
+      },
+      keyframes: {
+        expandFromMiddle: {
+          '0%': { width: '0%', transform: 'translateX(0%)', flex: 'none' },
+          '100%': { width: '100%', transform: 'translateX(0%)', flex: '1 1 auto' }
+        }
+      }
+    }
   },
   plugins: []
 };
