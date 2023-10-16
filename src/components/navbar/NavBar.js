@@ -22,7 +22,7 @@ const NavBar = () => {
             <NavToggler />
             <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
               <div className="flex flex-shrink-0 items-center">
-                <img className="h-11 w-11" src="/logo-tp.png" alt="logo" />
+                <img className="h-11 w-11 animate__animated animate__rotateIn animate__delay-2s" src="/logo-tp.png" alt="logo" />
               </div>
               <div className="hidden md:mx-auto md:block">
                 <div className="flex space-x-4">
