@@ -7,7 +7,7 @@ const NavItemLG = ({ label, active }) => {
       className={`group relative overflow-hidden 
     ${active
         ? 'dark:bg-gray-800 bg-white text-amber-400 shadow-2xl shadow-gray-800/80'
-        : 'hover:shadow-2xl hover:shadow-gray-800/80 cursor-pointer'} 
+        : 'shadow-2xl hover:shadow-gray-800/80 cursor-pointer'} 
     block rounded-b-lg px-3 py-2 text-base font-medium transition-all duration-300`}
       aria-current="page"
     >

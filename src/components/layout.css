@@ -161,3 +161,19 @@ img {
   opacity: 0;
   padding: 0 !important;
 }
+
+@keyframes expandFromMiddle {
+  0% {
+      width: 2%;
+      transform: translateX(0%);
+      flex: none;
+  }
+  100% {
+      width: 100%;
+      transform: translateX(0%);
+      flex: 1 1 auto;
+  }
+}
+.expandFromMiddle {
+  animation: expandFromMiddle 1s 0.5s ease-out;
+}

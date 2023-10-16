@@ -1,11 +1,22 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import NavToggler from './NavToggler';
 import NavItemLG from './NavItemLG';
 
 const NavBar = () => {
+  const navVariants = {
+    closed: { width: '0.4%', transform: 'translateX(0%)', flex: 'none' },
+    opened: { width: '100%', transform: 'translateX(0%)', flex: '1 1 auto' }
+  };
   return (
-    <div className="flex items-center justify-center" style={{ width: '100vw' }}>
-      <nav className="relative flex-1 bg-amber-400 mx-12 md:mx-8 sm:mx-4 md:rounded-b-lg dark shadow-2xl z-50 animate-expandFromMiddle delay-150">
+    <div className="flex items-center justify-center animate__animated animate__rotateIn duration-100" style={{ width: '100vw' }}>
+      <motion.nav
+        className="relative overflow-hidden bg-amber-400 mx-12 md:mx-8 sm:mx-4 md:rounded-b-lg dark shadow-2xl z-50 transition-all"
+        variants={navVariants}
+        initial="closed"
+        animate="opened"
+        transition={{ duration: 3, delay: 0.5 }}
+      >
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <NavToggler />
@@ -32,7 +43,7 @@ const NavBar = () => {
             <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
           </div>
         </div>
-      </nav>
+      </motion.nav>
     </div>
   );
 };

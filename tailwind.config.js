@@ -15,11 +15,11 @@ module.exports = {
     },
     extend: {
       animation: {
-        expandFromMiddle: 'expandFromMiddle 1s ease-out'
+        expandFromMiddle: 'expandFromMiddle 3s 0.5s ease-out'
       },
       keyframes: {
         expandFromMiddle: {
-          '0%': { width: '0%', transform: 'translateX(0%)', flex: 'none' },
+          '0%': { width: '2%', transform: 'translateX(0%)', flex: 'none' },
           '100%': { width: '100%', transform: 'translateX(0%)', flex: '1 1 auto' }
         }
       }
