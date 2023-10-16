@@ -11,7 +11,7 @@ const NavBar = () => {
   return (
     <div className="flex items-center justify-center animate__animated animate__rotateIn duration-100" style={{ width: '100vw' }}>
       <motion.nav
-        className="relative overflow-hidden bg-amber-400 mx-12 md:mx-8 sm:mx-4 md:rounded-b-lg dark shadow-2xl z-50 transition-all"
+        className="relative overflow-hidden bg-amber-400 mx-12 md:mx-8 sm:mx-4 md:rounded-b-lg shadow-2xl z-50 transition-all"
         variants={navVariants}
         initial="closed"
         animate="opened"

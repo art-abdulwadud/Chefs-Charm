@@ -13,6 +13,10 @@ module.exports = {
       md: '768px',
       sm: '480px'
     },
+    backgroundImage: {
+      'pattern-light': 'radial-gradient(#Fbbf24 0.55px, #e5e5f7 0.55px)',
+      'pattern-dark': 'radial-gradient(#Fbbf24 0.55px, #1f2937 0.55px)'
+    },
     extend: {
       animation: {
         expandFromMiddle: 'expandFromMiddle 3s 0.5s ease-out'

@@ -42,9 +42,7 @@ body {
 }
 
 .pattern-bg {
-  background-color: #e5e5f7;
   opacity: 0.9;
-  background-image: radial-gradient(#Fbbf24 0.55px, #e5e5f7 0.55px);
   background-size: 11px 11px;
 }
 
