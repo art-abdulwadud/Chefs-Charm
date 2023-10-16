@@ -1,9 +1,10 @@
-import { Link } from 'gatsby';
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const NavItemLG = ({ label, active }) => {
   return (
-    <Link
+    <motion.a
+      whileHover={{ ...active ? {} : { rotate: 360 } }}
       to="/"
       className={`
         ${active
@@ -12,8 +13,8 @@ const NavItemLG = ({ label, active }) => {
         block rounded-b-lg px-3 py-2 text-base font-medium transition-all duration-300`}
       aria-current="page"
     >
-      {label}
-    </Link>
+      <motion.span className="w-100 h-100">{label}</motion.span>
+    </motion.a>
   );
 };
 
