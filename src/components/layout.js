@@ -6,7 +6,8 @@ import NavBar from './navbar/NavBar';
 
 const Layout = ({ children }) => {
   return (
-    <main className="pattern-bg h-100vh">
+    <main className="relative h-100vh z-10">
+      <div className="absolute h-100vh w-100 pattern-bg z-0" />
       <NavBar />
       {children}
     </main>

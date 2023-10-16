@@ -4,7 +4,7 @@ import NavItemLG from './NavItemLG';
 
 const NavBar = () => {
   return (
-    <nav className="bg-amber-400 mx-12 md:mx-8 sm:mx-4 md:rounded-b-lg dark shadow-2xl">
+    <nav className="relative bg-amber-400 mx-12 md:mx-8 sm:mx-4 md:rounded-b-lg dark shadow-2xl z-50">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <NavToggler />
