@@ -26,10 +26,10 @@ const NavBar = () => {
               </div>
               <div className="hidden md:mx-auto md:block">
                 <div className="flex space-x-4">
-                  <NavItemLG label="Dashboard" active />
-                  <NavItemLG label="Team" />
-                  <NavItemLG label="Projects" />
-                  <NavItemLG label="Calendar" />
+                  <NavItemLG delay={0} label="Recipes" active />
+                  <NavItemLG delay={1} label="Tags" />
+                  <NavItemLG delay={2} label="Feeds" />
+                  <NavItemLG delay={3} label="Tips" />
                 </div>
               </div>
             </div>
