@@ -1,8 +1,12 @@
 import React from 'react';
+import { atom, Provider } from 'jotai';
 import 'animate.css/animate.min.css';
 import './layout.css';
 import './fonts.css';
 import NavBar from './navbar/NavBar';
+
+export const isBrowser = typeof window !== 'undefined';
+export const pageAtom = atom(() => isBrowser ? window.location.pathname : '');
 
 const Layout = ({ children }) => {
   return (
@@ -14,4 +18,10 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default ({ children }) => (
+  <Provider>
+    <Layout>
+      {children}
+    </Layout>
+  </Provider>
+);
