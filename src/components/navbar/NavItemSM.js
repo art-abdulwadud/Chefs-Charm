@@ -15,7 +15,7 @@ const NavItemSM = ({ link, delay, icon, label }) => {
         : 'cursor-pointer'} 
     block rounded-md px-3 py-2 text-base font-medium transition-all duration-300`}
       aria-current="page"
-      style={{ animationDelay: `${1 + (0.3 * delay)}s` }}
+      style={{ animationDelay: `${0.3 * delay}s` }}
     >
       <div className={`absolute inset-0 w-0 bg-amber-400 dark:group-hover:bg-gray-800 group-hover:bg-white transition-all duration-500 ease-out 
         ${page === `/${link}` || (link !== '' && page.includes(link)) ? '' : 'group-hover:w-full'}
