@@ -1,8 +1,8 @@
 import React from 'react';
 
-// NavItemLG is a React component for rendering a navigation item for large screens.
+// NavItemSM is a React component for rendering a navigation item for small screens.
 // It accepts props for label, active state, delay, and an icon.
-const NavItemLG = ({ label, active, delay, icon }) => {
+const NavItemSM = ({ active, delay, icon, label }) => {
   return (
     <a
       href="/"
@@ -28,4 +28,4 @@ const NavItemLG = ({ label, active, delay, icon }) => {
   );
 };
 
-export default NavItemLG;
+export default NavItemSM;
