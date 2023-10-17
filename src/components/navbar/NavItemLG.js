@@ -22,7 +22,7 @@ const NavItemLG = ({ label, delay, icon, link }) => {
         `}
       />
       <span className={`relative flex items-center justify-between
-        ${page === `/${link}` || (link !== '' && page.includes(link)) ? 'text-amber-400' : 'text-white group-hover:text-gray-800 dark:group-hover:text-white duration-500 ease-in'}`}
+        ${page === `/${link}` || (link !== '' && page.includes(link)) ? 'text-amber-400' : 'text-white group-hover:text-gray-800 dark:text-gray-800 dark:group-hover:text-white duration-500 ease-in'}`}
       >
         <span className="text-lg mr-2">{icon}</span>
         <span>{label}</span>
