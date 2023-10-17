@@ -9,8 +9,8 @@ const NavItemSM = ({ active, delay, icon, label }) => {
       className={`group relative overflow-hidden animate__animated animate__bounceInDown
     ${active
         ? 'dark:bg-gray-800 bg-white text-amber-400 shadow-2xl shadow-gray-800/80'
-        : 'shadow-2xl hover:shadow-gray-800/80 cursor-pointer'} 
-    block rounded-b-lg px-3 py-2 text-base font-medium transition-all duration-300`}
+        : 'cursor-pointer'} 
+    block rounded-md px-3 py-2 text-base font-medium transition-all duration-300`}
       aria-current="page"
       style={{ animationDelay: `${1 + (0.3 * delay)}s` }}
     >
@@ -18,7 +18,7 @@ const NavItemSM = ({ active, delay, icon, label }) => {
         ${active ? '' : 'group-hover:w-full'}
         `}
       />
-      <span className={`relative flex items-center justify-between
+      <span className={`relative flex items-center justify-start
         ${active ? 'text-amber-400' : 'text-white group-hover:text-gray-800 dark:group-hover:text-white duration-500 ease-in'}`}
       >
         <span className="text-lg mr-2">{icon}</span>
