@@ -4,8 +4,8 @@ import { MdFoodBank, MdOutlineDynamicFeed, MdOutlineTipsAndUpdates } from 'react
 import { FaTags } from 'react-icons/fa6';
 import NavToggler from './NavToggler';
 import NavItemLG from './NavItemLG';
-import NavItemSM from './NavItemSM';
 import NavLogo from './NavLogo';
+import MobileMenu from './MobileMenu';
 
 const NavBar = () => {
   const navVariants = {
@@ -37,14 +37,7 @@ const NavBar = () => {
             </div>
           </div>
         </div>
-        <div className="md:hidden" id="mobile-menu">
-          <div className="space-y-1 px-2 pb-3 pt-2">
-            <NavItemSM delay={0} label="Recipes" active icon={<MdFoodBank />} />
-            <NavItemSM delay={1} label="Tags" icon={<FaTags />} />
-            <NavItemSM delay={2} label="Feeds" icon={<MdOutlineDynamicFeed />} />
-            <NavItemSM delay={3} label="Tips" icon={<MdOutlineTipsAndUpdates />} />
-          </div>
-        </div>
+        <MobileMenu />
       </motion.nav>
     </div>
   );
