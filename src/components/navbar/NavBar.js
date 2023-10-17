@@ -5,6 +5,7 @@ import { FaTags } from 'react-icons/fa6';
 import NavToggler from './NavToggler';
 import NavItemLG from './NavItemLG';
 import NavItemSM from './NavItemSM';
+import NavLogo from './NavLogo';
 
 const NavBar = () => {
   const navVariants = {
@@ -24,9 +25,7 @@ const NavBar = () => {
           <div className="relative flex h-16 items-center justify-between">
             <NavToggler />
             <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
-              <div className="flex flex-shrink-0 items-center">
-                <img className="h-11 w-11 animate__animated animate__rotateIn animate__delay-2s" src="/logo-tp.png" alt="logo" />
-              </div>
+              <NavLogo />
               <div className="hidden md:mx-auto md:block">
                 <div className="flex space-x-4">
                   <NavItemLG delay={0} label="Recipes" active icon={<MdFoodBank />} />
