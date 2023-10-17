@@ -28,10 +28,10 @@ const NavBar = () => {
               <NavLogo />
               <div className="hidden md:mx-auto md:block">
                 <div className="flex space-x-4">
-                  <NavItemLG delay={0} label="Recipes" active icon={<MdFoodBank />} />
-                  <NavItemLG delay={1} label="Tags" icon={<FaTags />} />
-                  <NavItemLG delay={2} label="Feeds" icon={<MdOutlineDynamicFeed />} />
-                  <NavItemLG delay={3} label="Tips" icon={<MdOutlineTipsAndUpdates />} />
+                  <NavItemLG delay={0} label="Recipes" link="" active icon={<MdFoodBank />} />
+                  <NavItemLG delay={1} label="Tags" link="/tags" icon={<FaTags />} />
+                  <NavItemLG delay={2} label="Feeds" link="/feeds" icon={<MdOutlineDynamicFeed />} />
+                  <NavItemLG delay={3} label="Tips" link="/tips" icon={<MdOutlineTipsAndUpdates />} />
                 </div>
               </div>
             </div>
