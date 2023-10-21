@@ -7,7 +7,6 @@ import NavBar from './navbar/NavBar';
 
 export const isBrowser = typeof window !== 'undefined';
 export const pageAtom = atom(() => isBrowser ? window.location.pathname : '');
-export const themeAtom = atom(isBrowser && window.localStorage.getItem('themeSelected') && window.localStorage.getItem('themeSelected') === 'dark' ? 'dark' : '');
 export const darkModeAtom = atom(isBrowser && window.localStorage.getItem('darkMode'));
 
 const Layout = ({ children }) => {
