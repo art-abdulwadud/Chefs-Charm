@@ -1,5 +1,6 @@
 import { useAtom } from 'jotai';
 import React from 'react';
+import { Link } from 'gatsby';
 import { pageAtom } from '../layout';
 
 // NavItemSM is a React component for rendering a navigation item for small screens.
@@ -7,7 +8,7 @@ import { pageAtom } from '../layout';
 const NavItemSM = ({ link, delay, icon, label }) => {
   const [page] = useAtom(pageAtom);
   return (
-    <a
+    <Link
       href="/"
       className={`group relative overflow-hidden animate__animated animate__bounceInDown
     ${page === `/${link}` || (link !== '' && page.includes(link))
@@ -27,7 +28,7 @@ const NavItemSM = ({ link, delay, icon, label }) => {
         <span className="text-lg mr-2">{icon}</span>
         <span>{label}</span>
       </span>
-    </a>
+    </Link>
   );
 };
 
