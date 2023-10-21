@@ -9,7 +9,7 @@ const NavItemSM = ({ link, delay, icon, label }) => {
   const [page] = useAtom(pageAtom);
   return (
     <Link
-      href="/"
+      to="/"
       className={`group relative overflow-hidden animate__animated animate__bounceInDown
     ${page === `/${link}` || (link !== '' && page.includes(link))
         ? 'dark:bg-gray-800 bg-white text-amber-400 shadow-2xl shadow-gray-800/80'
