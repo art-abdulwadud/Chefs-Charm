@@ -178,7 +178,7 @@ img {
 
 @media only screen and (max-width: 767px) {
   .nav-logo {
-    flex: 1 1 auto;
+    flex: 1 1 auto; /* set flex grow and flex shrink to 1 and then set flex basis to auto */
     justify-content: center;
   }
 }

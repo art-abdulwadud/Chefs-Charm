@@ -1,19 +1,12 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { useAtom } from 'jotai';
 import { navOpenedAtom } from './NavBar';
 
 const NavToggler = () => {
   const [navOpened, setNavOpened] = useAtom(navOpenedAtom);
   return (
-    <motion.div
+    <div
       className="absolute inset-y-0 left-0 flex items-center md:hidden transition-all duration-300 delay-300"
-      variants={{
-        hide: { maxWidth: '0', maxHeight: '0' },
-        show: { maxWidth: '1000px', maxHeight: '1000px' }
-      }}
-      initial="hide"
-      animate="show"
     >
       <button
         type="button"
@@ -31,7 +24,7 @@ const NavToggler = () => {
           <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
-    </motion.div>
+    </div>
   );
 };
 
