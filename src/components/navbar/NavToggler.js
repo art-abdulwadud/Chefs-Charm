@@ -17,7 +17,7 @@ const NavToggler = () => {
     >
       <button
         type="button"
-        className="relative inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-white hover:text-amber-400 dark:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-white focus:outline-none focus:ring-0"
+        className="relative inline-flex duration-300 items-center justify-center rounded-md p-2 text-white hover:bg-white hover:text-amber-400 dark:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-white focus:outline-none focus:ring-0"
         aria-controls="mobile-menu"
         aria-expanded="false"
         onClick={() => setNavOpened(!navOpened)}
