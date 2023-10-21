@@ -7,6 +7,7 @@ import NavToggler from './NavToggler';
 import NavItemLG from './NavItemLG';
 import NavLogo from './NavLogo';
 import MobileMenu from './MobileMenu';
+import ThemeToggler from './ThemeToggler';
 
 export const navOpenedAtom = atom(false);
 
@@ -37,6 +38,7 @@ const NavBar = () => {
                   <NavItemLG delay={3} label="Tips" link="/tips" icon={<MdOutlineTipsAndUpdates />} />
                 </div>
               </div>
+              <ThemeToggler />
             </div>
           </div>
         </div>

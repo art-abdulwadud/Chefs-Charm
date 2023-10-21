@@ -6,7 +6,7 @@ import { themeAtom } from '../layout';
 const ThemeToggler = () => {
   const [theme, setTheme] = useAtom(themeAtom);
   return (
-    <div className="py-1">
+    <div className="mx-auto p-2 flex right">
       <Switch
         checked={theme === 'dark'}
         onChange={() => theme === 'dark' ? setTheme('') : setTheme('dark')}
