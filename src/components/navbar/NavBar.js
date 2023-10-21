@@ -2,10 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MdFoodBank, MdOutlineDynamicFeed, MdOutlineTipsAndUpdates } from 'react-icons/md';
 import { FaTags } from 'react-icons/fa6';
+import { atom } from 'jotai';
 import NavToggler from './NavToggler';
 import NavItemLG from './NavItemLG';
 import NavLogo from './NavLogo';
 import MobileMenu from './MobileMenu';
+
+export const navOpened = atom(false);
 
 const NavBar = () => {
   const navVariants = {
