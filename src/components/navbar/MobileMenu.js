@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useAnimate } from 'framer-motion';
 import { MdFoodBank, MdOutlineDynamicFeed, MdOutlineTipsAndUpdates } from 'react-icons/md';
 import { FaTags } from 'react-icons/fa6';
 import { useAtom } from 'jotai';
@@ -7,13 +8,16 @@ import { navOpenedAtom } from './NavBar';
 
 const MobileMenu = () => {
   const [navOpened] = useAtom(navOpenedAtom);
-  const mobileMenuVariants = {
-    closed: { maxHeight: '0', maxWidth: '0' },
-    opened: { maxWidth: '1000px', maxHeight: '1000px' }
-  };
+  const [scope, animate] = useAnimate();
+  useEffect(() => {
+    navOpened
+      ? animate('div', { maxWidth: '1000px', maxHeight: '1000px', opacity: 1 })
+      : animate('div', { maxHeight: '0', maxWidth: '0', opacity: 0 });
+    return () => animate('div', { maxHeight: '0', maxWidth: '0', opacity: 0 });
+  }, [navOpened]);
   return (
-    <div className={`${navOpened ? '' : 'sm:hidden'} md:hidden`} id="mobile-menu">
-      <div className="space-y-1 px-2 pb-3 pt-2">
+    <div ref={scope} className="md:hidden overflow-hidden" id="mobile-menu">
+      <div className="space-y-1 px-2 pb-3 pt-2 duration-500">
         <NavItemSM delay={0} label="Recipes" link="" icon={<MdFoodBank />} />
         <NavItemSM delay={1} label="Tags" link="/tags" icon={<FaTags />} />
         <NavItemSM delay={2} label="Feeds" link="/feeds" icon={<MdOutlineDynamicFeed />} />
