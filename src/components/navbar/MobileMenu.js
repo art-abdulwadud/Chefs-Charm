@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { motion, useAnimate } from 'framer-motion';
+import { useAnimate } from 'framer-motion';
 import { MdFoodBank, MdOutlineDynamicFeed, MdOutlineTipsAndUpdates } from 'react-icons/md';
 import { FaTags } from 'react-icons/fa6';
 import { useAtom } from 'jotai';
@@ -16,7 +16,7 @@ const MobileMenu = () => {
     return () => animate('div', { maxHeight: '0', maxWidth: '0', opacity: 0 }, { duration: 0.6 });
   }, [navOpened]);
   return (
-    <motion.div
+    <div
       ref={scope}
       className={`md:hidden overflow-hidden collapsible ${navOpened ? '' : 'collapsed'}`}
       style={{ transition: 'all 0.6s ease-in-out' }}
@@ -28,7 +28,7 @@ const MobileMenu = () => {
         <NavItemSM delay={2} label="Feeds" link="/feeds" icon={<MdOutlineDynamicFeed />} />
         <NavItemSM delay={3} label="Tips" link="/tips" icon={<MdOutlineTipsAndUpdates />} />
       </div>
-    </motion.div>
+    </div>
   );
 };
 
