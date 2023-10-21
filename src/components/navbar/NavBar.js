@@ -8,7 +8,7 @@ import NavItemLG from './NavItemLG';
 import NavLogo from './NavLogo';
 import MobileMenu from './MobileMenu';
 
-export const navOpened = atom(false);
+export const navOpenedAtom = atom(false);
 
 const NavBar = () => {
   const navVariants = {
