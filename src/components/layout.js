@@ -6,12 +6,17 @@ import './fonts.css';
 import NavBar from './navbar/NavBar';
 
 export const isBrowser = typeof window !== 'undefined';
+// A global state for identifying the current page
 export const pageAtom = atom(() => isBrowser ? window.location.pathname : '');
+// A global state for identifying the theme selected by the user
+// Initially, its value is determined by darkMode item in localStorage
 export const darkModeAtom = atom(isBrowser && window.localStorage.getItem('darkMode')?.toString() === 'true');
 
 const Layout = ({ children }) => {
   const [darkMode] = useAtom(darkModeAtom);
   useEffect(() => {
+    // update the value of darkMode item in localStorage
+    // every time the user selects a different theme
     if (isBrowser) window.localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
   return (
