@@ -12,8 +12,8 @@ const MobileMenu = () => {
   useEffect(() => {
     navOpened
       ? animate('div', { maxWidth: '1000px', maxHeight: '1000px', opacity: 1 }, { duration: 0.6 })
-      : animate('div', { maxHeight: '0', maxWidth: '0', opacity: 0 }, { duration: 0.6 });
-    return () => animate('div', { maxHeight: '0', maxWidth: '0', opacity: 0 }, { duration: 0.6 });
+      : animate('div', { maxHeight: '0px', maxWidth: '0px', opacity: 0 }, { duration: 0.6 });
+    return () => animate('div', { maxHeight: '0px', maxWidth: '0px', opacity: 0 }, { duration: 0.6 });
   }, [navOpened]);
   return (
     <div
