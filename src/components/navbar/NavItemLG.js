@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAtom } from 'jotai';
+import { Link } from 'gatsby';
 import { pageAtom } from '../layout';
 
 // NavItemLG is a React component for rendering a navigation item for large screens.
@@ -7,8 +8,8 @@ import { pageAtom } from '../layout';
 const NavItemLG = ({ label, delay, icon, link }) => {
   const [page] = useAtom(pageAtom);
   return (
-    <a
-      href="/"
+    <Link
+      to="/"
       className={`group relative overflow-hidden animate__animated animate__bounceInDown
     ${page === `/${link}` || (link !== '' && page.includes(link))
         ? 'dark:bg-gray-800 bg-white text-amber-400 shadow-2xl shadow-gray-800/80'
@@ -27,7 +28,7 @@ const NavItemLG = ({ label, delay, icon, link }) => {
         <span className="text-lg mr-2">{icon}</span>
         <span>{label}</span>
       </span>
-    </a>
+    </Link>
   );
 };
 
