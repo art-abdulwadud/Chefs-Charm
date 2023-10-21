@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
     "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.16",
     "framer-motion": "^10.16.4",
