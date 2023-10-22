@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { atom, useAtom } from 'jotai';
 import React, { useEffect } from 'react';
+import RecipeCard from './RecipeCard';
 
 export const recipesAtom = atom([]);
 
@@ -32,7 +33,11 @@ const Recipes = () => {
     fetchRecipes();
   }, []);
   return (
-    <div>Recipes {console.log(recipes)}</div>
+    <div>
+      {recipes.map((key) => (
+        <RecipeCard key={key.id} />
+      ))}
+    </div>
   );
 };
 
