@@ -42,7 +42,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-env-variables',
       options: {
-        allowList: ['MY_API_KEY']
+        allowList: ['GATSBY_API_KEY']
       }
     }
   ]
