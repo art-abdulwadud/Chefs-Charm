@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { atom, Provider, useAtom } from 'jotai';
+import { atom, useAtom } from 'jotai';
 import 'animate.css/animate.min.css';
 import './layout.css';
 import './fonts.css';
@@ -28,10 +28,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default ({ children }) => (
-  <Provider>
-    <Layout>
-      {children}
-    </Layout>
-  </Provider>
-);
+export default Layout;
