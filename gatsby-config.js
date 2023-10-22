@@ -38,6 +38,12 @@ module.exports = {
       options: {
         postCssPlugins: [require('autoprefixer')()]
       }
+    },
+    {
+      resolve: 'gatsby-plugin-env-variables',
+      options: {
+        allowList: ['MY_API_KEY']
+      }
     }
   ]
 };
