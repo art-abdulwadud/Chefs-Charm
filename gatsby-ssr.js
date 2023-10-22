@@ -7,6 +7,9 @@
 /**
  * @type {import('gatsby').GatsbySSR['onRenderBody']}
  */
-exports.onRenderBody = ({ setHtmlAttributes }) => {
+
+export { wrapRootElement } from './gatsby-shared';
+
+export function onRenderBody({ setHtmlAttributes }) {
   setHtmlAttributes({ lang: 'en' });
-};
+}
