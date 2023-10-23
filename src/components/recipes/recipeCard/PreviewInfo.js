@@ -7,7 +7,7 @@ const PreviewInfo = ({ recipe }) => {
       <div
         className="h-36 p-2 shadow-xl"
         style={{
-          backgroundImage: 'linear-gradient(rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.8))',
+          backgroundImage: 'linear-gradient(rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.8))',
           backdropFilter: 'blur(5px)',
           WebkitBackdropFilter: 'blur(5px)',
           borderRadius: '10px' }}
