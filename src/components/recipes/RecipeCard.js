@@ -5,8 +5,8 @@ import { selectedRecipeAtom } from './Recipes';
 const RecipeCard = ({ recipe }) => {
   const [selectedRecipe] = useAtom(selectedRecipeAtom);
   return (
-    <div className="h-52 w-28">
-      <img src={recipe?.thumbnail_url} alt={recipe?.slug || ''} className="h-52 w-28" />
+    <div className="h-80 w-80 shadow-2xl cursor" style={{ borderRadius: '20px' }}>
+      <img src={recipe?.thumbnail_url} alt={recipe?.slug || ''} className="h-80 w-80" style={{ borderRadius: '20px' }} />
     </div>
   );
 };
