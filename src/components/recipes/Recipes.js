@@ -30,7 +30,7 @@ const Recipes = () => {
     }
   });
   return (
-    <div>
+    <div className="relative z-10">
       {data?.map((key) => (
         <RecipeCard key={key.id} recipe={key} />
       ))}
