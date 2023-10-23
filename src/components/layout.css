@@ -160,6 +160,18 @@ img {
   padding: 0 !important;
 }
 
+/* Shorten text */
+.short-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  position: relative;
+  min-height: 30px;
+  height: fit-content;
+}
+
 @keyframes expandFromMiddle {
   0% {
       width: 2%;
