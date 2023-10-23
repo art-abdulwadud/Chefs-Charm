@@ -32,7 +32,7 @@ const Recipes = () => {
     }
   });
   return (
-    <div className="relative z-10 flex center gap-5 wrap my-10 mx-4">
+    <div className="relative z-10 flex center gap-5 wrap my-10 mx-2">
       {data?.map((key) => (
         <RecipeCard key={key.id} recipe={key} />
       ))}
