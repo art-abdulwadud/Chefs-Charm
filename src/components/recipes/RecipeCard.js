@@ -2,6 +2,7 @@
 import React from 'react';
 import Yields from './recipeCard/Yields';
 import PreviewInfo from './recipeCard/PreviewInfo';
+import RecipeThumbnail from './recipeCard/RecipeThumbnail';
 // import { selectedRecipeAtom } from './Recipes';
 
 const RecipeCard = ({ recipe }) => {
@@ -13,14 +14,7 @@ const RecipeCard = ({ recipe }) => {
         borderRadius: '20px'
       }}
     >
-      <img
-        src={recipe?.thumbnail_url}
-        alt={recipe?.slug || ''}
-        className="h-72 w-72 group-hover:shadow-xl group-hover:shadow-slate-700 shadow-lg shadow-slate-700 duration-500"
-        style={{
-          borderRadius: '5px',
-          borderTopRightRadius: '20%' }}
-      />
+      <RecipeThumbnail recipe={recipe} />
       <Yields recipe={recipe} />
       <PreviewInfo recipe={recipe} />
     </div>
