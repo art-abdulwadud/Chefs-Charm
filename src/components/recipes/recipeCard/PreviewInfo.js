@@ -8,8 +8,19 @@ const PreviewInfo = ({ recipe }) => {
         className="h-36 p-2 shadow-xl backdrop-blur-sm bg-white/60 dark:bg-gray-800/60 rounded-lg"
       >
         <div className="w-100 flex justify-between text-xs text-gray-800 dark:text-white">
-          <span>{recipe?.credits?.map((key) => (
-            <span key={key.name}>{key.name}</span>
+          <span
+            className="short-text"
+            style={{
+              WebkitLineClamp: '1',
+              maxWidth: '185px',
+              minHeight: '5px'
+            }}
+          >{recipe?.credits?.map((key, index) => (
+            <span
+              key={key.name}
+              className="font-medium mr-1"
+            >{key.name}{index === recipe.credits.length - 1 ? '' : ','}
+            </span>
           ))}
           </span>
           <span className="font-light">{recipe?.updated_at ? new Date(recipe.updated_at).toDateString() : new Date().toDateString()}</span>

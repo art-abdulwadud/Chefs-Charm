@@ -15,7 +15,7 @@ export const dummyData = [
     servings_noun_plural: 'servings',
     id: 4704,
     aspect_ratio: '1:1',
-    credits: [{ name: 'Abdiwadud' }],
+    credits: [{ name: 'Abdiwadud Haji' }],
     name: 'Low-Carb Avocado Chicken Salad',
     language: 'eng',
     brand: null,

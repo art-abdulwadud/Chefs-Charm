@@ -5,7 +5,9 @@ const Yields = ({ recipe }) => {
   return (
     <div className="absolute top-3 left-0 px-3 pt-1">
       <div
-        className="p-1 px-2 bg-gray-800 text-white flex gap-1 items-center"
+        className="p-1 px-2 flex gap-1 items-center
+        dark:bg-gray-800 dark:text-white
+        bg-white text-gray-800"
         style={{
           borderRadius: '20px',
           borderTopLeftRadius: '5px' }}
