@@ -1,19 +1,20 @@
 // import { useAtom } from 'jotai';
 import React from 'react';
+import { FaCircleChevronRight } from 'react-icons/fa6';
 // import { selectedRecipeAtom } from './Recipes';
 
 const RecipeCard = ({ recipe }) => {
   // const [selectedRecipe] = useAtom(selectedRecipeAtom);
   return (
-    <div className="relative h-80 w-80 shadow-2xl cursor bg-amber-400 flex center" style={{ borderRadius: '20px' }}>
+    <div className="relative h-80 w-80 shadow-2xl bg-amber-400 flex center" style={{ borderRadius: '20px' }}>
       <img src={recipe?.thumbnail_url} alt={recipe?.slug || ''} className="h-72 w-72 shadow-2xl" style={{ borderRadius: '50%', borderBottomLeftRadius: '5px', borderBottomRightRadius: '5px' }} />
       <div id="preview-info" className="absolute bottom-3 left-0 h-40 w-100 px-3">
         <div
           className="h-36 p-2 shadow-xl"
           style={{
-            background: 'rgba(0,0,0,0.3)',
-            backdropFilter: 'blur(4px)',
-            WebkitBackdropFilter: 'blur(4px)',
+            background: 'rgba(0,0,0,0.4)',
+            backdropFilter: 'blur(5px)',
+            WebkitBackdropFilter: 'blur(5px)',
             borderRadius: '10px' }}
         >
           <div className="w-100 flex justify-between text-xs text-white">
@@ -27,6 +28,10 @@ const RecipeCard = ({ recipe }) => {
             <span className="font-medium text-base">{recipe?.name}</span>
             <br />
             <span className="font-light text-xs short-text">{recipe?.description}</span>
+          </div>
+          <div className="flex items-center justify-start mt-2 text-amber-400 gap-2 cursor">
+            <span className="text-xs">Read More</span>
+            <FaCircleChevronRight className="text-sm" />
           </div>
         </div>
       </div>
