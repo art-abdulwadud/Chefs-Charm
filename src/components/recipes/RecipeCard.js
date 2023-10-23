@@ -1,6 +1,7 @@
 // import { useAtom } from 'jotai';
 import React from 'react';
-import { FaCircleChevronRight, FaBowlFood } from 'react-icons/fa6';
+import { FaCircleChevronRight } from 'react-icons/fa6';
+import Yields from './recipeCard/Yields';
 // import { selectedRecipeAtom } from './Recipes';
 
 const RecipeCard = ({ recipe }) => {
@@ -15,30 +16,17 @@ const RecipeCard = ({ recipe }) => {
       <img
         src={recipe?.thumbnail_url}
         alt={recipe?.slug || ''}
-        className="h-72 w-72 group-hover:shadow-xl group-hover:shadow-slate-800 shadow-lg shadow-slate-800 duration-500"
+        className="h-72 w-72 group-hover:shadow-xl group-hover:shadow-slate-700 shadow-lg shadow-slate-700 duration-500"
         style={{
           borderRadius: '5px',
           borderTopRightRadius: '20%' }}
       />
-      <div className="absolute top-3 left-0 px-3 pt-1">
-        <div
-          className="p-1 px-2 bg-gray-800 text-white flex gap-1 items-center"
-          style={{
-            borderRadius: '20px',
-            borderTopLeftRadius: '5px' }}
-        >
-          <FaBowlFood className="text-sm text-amber-400" />
-          <span className="text-sm">{recipe?.yields?.includes('Servings:')
-            ? `${recipe.yields.split(' ')[1]} Servings` : !recipe?.yields?.includes('Servings:')
-              ? recipe.yields : ''}
-          </span>
-        </div>
-      </div>
+      <Yields recipe={recipe} />
       <div id="preview-info" className="absolute bottom-3 left-0 h-40 w-100 px-3">
         <div
           className="h-36 p-2 shadow-xl"
           style={{
-            background: 'rgba(0,0,0,0.4)',
+            backgroundImage: 'linear-gradient(rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.8))',
             backdropFilter: 'blur(5px)',
             WebkitBackdropFilter: 'blur(5px)',
             borderRadius: '10px' }}
