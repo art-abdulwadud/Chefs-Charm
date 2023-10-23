@@ -1,7 +1,10 @@
 import axios from 'axios';
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { atom } from 'jotai';
 import RecipeCard from './RecipeCard';
+
+export const selectedRecipeAtom = atom(null);
 
 const Recipes = () => {
   const { data } = useQuery(['fetchUsers'], async () => {
@@ -29,7 +32,7 @@ const Recipes = () => {
   return (
     <div>
       {data?.map((key) => (
-        <RecipeCard key={key.id} />
+        <RecipeCard key={key.id} recipe={key} />
       ))}
     </div>
   );

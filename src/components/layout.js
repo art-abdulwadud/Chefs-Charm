@@ -16,15 +16,29 @@ export const darkModeAtom = atom(isBrowser && window.localStorage.getItem('darkM
 
 const Layout = ({ children }) => {
   const [darkMode] = useAtom(darkModeAtom);
+  const setPatterBgHeight = () => {
+    // Set the height of content background to the height of content wrapper
+    // since the content background has a position of absolute
+    const height = document.querySelector('.content-wrapper')?.clientHeight;
+    document.querySelector('.content-background')
+      ? document.querySelector('.content-background').style.height = `${height}px`
+      : null;
+  };
   useEffect(() => {
+    // Set the height after every second
+    // This variable will be the interval id
+    const patternHeightInterval = setInterval(setPatterBgHeight, 1000);
     // update the value of darkMode item in localStorage
     // every time the user selects a different theme
     if (isBrowser) window.localStorage.setItem('darkMode', darkMode);
+    // clear interval during cleanup
+    // to clean up effects from previous renders
+    return () => clearInterval(patternHeightInterval);
   }, [darkMode]);
   return (
     <QueryClientProvider client={queryClient}>
-      <main className={`relative h-100vh z-10 ${darkMode ? 'dark' : ''}`}>
-        <div className="absolute h-100vh w-100 pattern-bg bg-white dark:bg-gray-800 bg-pattern-light dark:bg-pattern-dark dark z-0" />
+      <main className={`relative h-100vh z-10 ${darkMode ? 'dark' : ''} content-wrapper`}>
+        <div className="absolute content-background h-100vh w-100 pattern-bg bg-white dark:bg-gray-800 bg-pattern-light dark:bg-pattern-dark dark z-0" />
         <NavBar />
         {children}
       </main>
