@@ -4,7 +4,7 @@ import { FaCircleChevronRight } from 'react-icons/fa6';
 import { selectedRecipeAtom } from '../Recipes';
 
 const PreviewInfo = ({ recipe }) => {
-  const [, setSelectedRecipe] = useAtom(selectedRecipeAtom);
+  const [selectedRecipe, setSelectedRecipe] = useAtom(selectedRecipeAtom);
   return (
     <div id="preview-info" className="absolute bottom-3 left-0 h-40 w-100 px-3">
       <div
@@ -36,7 +36,7 @@ const PreviewInfo = ({ recipe }) => {
         <button
           type="button"
           className="border-0 flex items-center justify-start mt-2 text-amber-700 dark:text-amber-400 gap-2 cursor"
-          onClick={() => setSelectedRecipe(recipe)}
+          onClick={() => selectedRecipe ? setSelectedRecipe(null) : setSelectedRecipe(recipe)}
         >
           <span className="text-xs font-medium">Read More</span>
           <FaCircleChevronRight className="text-sm" />

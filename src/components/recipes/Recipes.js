@@ -1,5 +1,5 @@
 // import axios from 'axios';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { atom } from 'jotai';
 import RecipeCard from './RecipeCard';
@@ -8,6 +8,7 @@ import { dummyData } from './dummyData';
 export const selectedRecipeAtom = atom(null);
 
 const Recipes = () => {
+  const [loading, setLoading] = useState(true);
   const { data } = useQuery(['fetchUsers'], () => {
     try {
       // const options = {
@@ -31,11 +32,18 @@ const Recipes = () => {
       return [];
     }
   });
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 5000);
+  }, []);
   return (
     <div className="relative z-10 flex center gap-5 wrap py-10 mx-2 overflow-hidden">
-      {data?.map((key) => (
-        <RecipeCard key={key.id} recipe={key} />
-      ))}
+      {loading ? 'loading' : (
+        <>
+          {data?.map((key, index) => (
+            <RecipeCard key={key.id} recipe={key} delay={index} />
+          ))}
+        </>
+      )}
     </div>
   );
 };
