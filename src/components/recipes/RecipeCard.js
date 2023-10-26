@@ -16,7 +16,8 @@ const RecipeCard = ({ recipe, delay }) => {
   };
   return (
     <motion.div
-      className="relative group bg-amber-400 flex justify-start duration-500 animate__animated animate__rotateInUpRight overflow-hidden"
+      className={`relative group bg-amber-400 flex justify-start duration-500 animate__animated animate__rotateInUpRight overflow-hidden
+      ${selectedRecipe?.id === recipe?.id ? '' : !selectedRecipe ? '' : 'animate__rotateOutUpRight'}`}
       style={{
         borderRadius: '20px',
         animationDelay: `${0.3 * delay}s`

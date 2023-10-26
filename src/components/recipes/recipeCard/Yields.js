@@ -1,9 +1,14 @@
+import { useAtom } from 'jotai';
 import React from 'react';
 import { FaBowlFood } from 'react-icons/fa6';
+import { selectedRecipeAtom } from '../Recipes';
 
 const Yields = ({ recipe }) => {
+  const [selectedRecipe] = useAtom(selectedRecipeAtom);
   return (
-    <div className="absolute top-3 left-0 px-3 pt-1">
+    <div className={`absolute top-3 left-0 px-3 pt-1 animate__animated
+    ${selectedRecipe?.id === recipe?.id ? 'animate__rotateOutUpRight' : !selectedRecipe ? 'animate__rotateInUpRight' : 'animate__rotateOutUpRight'}`}
+    >
       <div
         className="p-1 px-2 flex gap-1 items-center
         dark:bg-gray-800 dark:text-white
