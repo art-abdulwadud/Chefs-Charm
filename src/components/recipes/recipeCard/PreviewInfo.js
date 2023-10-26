@@ -1,14 +1,22 @@
 import { useAtom } from 'jotai';
 import React from 'react';
+import { motion } from 'framer-motion';
 import { FaCircleChevronRight } from 'react-icons/fa6';
 import { selectedRecipeAtom } from '../Recipes';
 
 const PreviewInfo = ({ recipe }) => {
   const [selectedRecipe, setSelectedRecipe] = useAtom(selectedRecipeAtom);
+  const previewVariants = {
+    hidden: { width: '0', maxHeight: '0', minHeight: '0', padding: '0', transition: { ease: 'easeInOut' } },
+    preview: { maxHeight: '9rem', minHeight: '9rem', width: '100%', padding: '0.5rem', transition: { ease: 'easeInOut', duration: 1 } }
+  };
   return (
-    <div id="preview-info" className="absolute bottom-3 left-0 h-40 w-100 px-3">
-      <div
-        className="h-36 p-2 shadow-xl backdrop-blur-sm bg-white/60 dark:bg-gray-800/60 rounded-lg"
+    <div id="preview-info" className="absolute bottom-3 left-0 h-40 w-100">
+      <motion.div
+        className="shadow-xl backdrop-blur-sm bg-white/60 dark:bg-gray-800/60 rounded-lg overflow-hidden"
+        variants={previewVariants}
+        initial="hidden"
+        animate={selectedRecipe?.id === recipe?.id ? 'hidden' : !selectedRecipe ? 'preview' : 'hidden'}
       >
         <div className="w-100 flex justify-between text-xs text-gray-800 dark:text-white">
           <span
@@ -41,7 +49,7 @@ const PreviewInfo = ({ recipe }) => {
           <span className="text-xs font-medium">Read More</span>
           <FaCircleChevronRight className="text-sm" />
         </button>
-      </div>
+      </motion.div>
     </div>
   );
 };
