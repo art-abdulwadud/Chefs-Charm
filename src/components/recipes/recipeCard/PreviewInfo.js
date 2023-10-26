@@ -8,10 +8,14 @@ const PreviewInfo = ({ recipe }) => {
   const [selectedRecipe, setSelectedRecipe] = useAtom(selectedRecipeAtom);
   const previewVariants = {
     hidden: { width: '0', maxHeight: '0', minHeight: '0', padding: '0', transition: { ease: 'easeInOut' } },
-    preview: { maxHeight: '9rem', minHeight: '9rem', width: '100%', padding: '0.5rem', transition: { ease: 'easeInOut', duration: 1 } }
+    preview: { maxHeight: '9rem', minHeight: '9rem', width: '100%', padding: '0.5rem', transition: { ease: 'easeInOut' } }
   };
   return (
-    <div id="preview-info" className="absolute bottom-3 left-0 h-40 w-100">
+    <div
+      id="preview-info"
+      className={`absolute bottom-3 left-0 h-40 w-100 animate__animated animate__fast
+    ${selectedRecipe?.id === recipe?.id ? 'animate__fadeOutDown' : !selectedRecipe ? 'animate__fadeInUp' : 'animate__fadeOutDown'}`}
+    >
       <motion.div
         className="shadow-xl backdrop-blur-sm bg-white/60 dark:bg-gray-800/60 rounded-lg overflow-hidden"
         variants={previewVariants}

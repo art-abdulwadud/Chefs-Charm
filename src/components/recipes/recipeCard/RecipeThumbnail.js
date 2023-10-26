@@ -7,7 +7,7 @@ const RecipeThumbnail = ({ recipe }) => {
   const [selectedRecipe, setSelectedRecipe] = useAtom(selectedRecipeAtom);
   const thumbnailVariants = {
     hidden: { width: 0, maxHeight: '0', minHeight: '0', transition: { ease: 'easeInOut' } },
-    preview: { maxHeight: '18rem', minHeight: '18rem', width: '18rem', borderRadius: '5px', borderTopRightRadius: '20%', transition: { ease: 'easeInOut', duration: 1 } },
+    preview: { maxHeight: '18rem', minHeight: '18rem', width: '18rem', borderRadius: '5px', borderTopRightRadius: '20%', transition: { ease: 'easeInOut' } },
     expand: { maxHeight: '50vh', minHeight: '50vh', width: '50vw', borderRadius: '5px', borderTopRightRadius: '5px', transition: { ease: 'easeInOut', duration: 1 } }
   };
   return (
