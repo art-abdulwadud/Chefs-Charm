@@ -19,7 +19,7 @@ const RecipeThumbnail = ({ recipe }) => {
       animate={selectedRecipe?.id === recipe?.id ? 'expand' : !selectedRecipe ? 'preview' : 'hidden'}
       className={`${selectedRecipe?.id === recipe?.id ? '' : 'group-hover:shadow-xl shadow-lg'}
       group-hover:shadow-gray-800/70 shadow-gray-800/60 z-10
-      duration-500 ${selectedRecipe?.id === recipe?.id ? 'md:mt-2 md:-mr-2 mt-20' : 'ml-7'}`}
+      duration-500 ${selectedRecipe?.id === recipe?.id ? 'md:mt-2 md:-mr-2' : 'm-0'}`}
       style={{ minWidth: '295px' }}
       onClick={() => selectedRecipe ? setSelectedRecipe(null) : setSelectedRecipe(recipe)}
     />

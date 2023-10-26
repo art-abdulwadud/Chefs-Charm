@@ -7,7 +7,7 @@ import { selectedRecipeAtom } from '../../Recipes';
 const Header = ({ recipe }) => {
   const [selectedRecipe] = useAtom(selectedRecipeAtom);
   return (
-    <div className={`animate__animated duration-100 absolute top-0 left-0 w-100 flex center column
+    <div className={`animate__animated duration-100 w-100 flex center column z-20
     ${selectedRecipe?.id === recipe?.id ? 'animate__slideInDown' : !selectedRecipe ? 'animate__rotateOutUpRight' : 'animate__rotateOutUpRight'}`}
     >
       <p className="m-0 font-bold text-2xl text-center text-gray-800 dark:text-white dark:bg-gray-800 p-2 mb-2 dark:rounded-xl">
