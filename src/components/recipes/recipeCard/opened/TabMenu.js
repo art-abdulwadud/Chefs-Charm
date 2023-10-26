@@ -4,7 +4,7 @@ const TabMenu = ({ tabIndex, setTabIndex }) => {
   const activeTab = 'text-amber-400 border-amber-400 ';
   const inactiveTab = 'border-white/5';
   return (
-    <div className="flex gap-2 text-base mb-4">
+    <div className="flex gap-2 text-base mb-4 z-10 relative">
       <span
         className={`
       ${tabIndex === 0 ? activeTab : inactiveTab}

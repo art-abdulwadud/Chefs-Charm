@@ -17,7 +17,8 @@ const Steps = ({ recipe }) => {
       style={{ maxHeight: '30rem', minHeight: '25rem', maxWidth: '60rem', minWidth: '20rem' }}
     >
       <TabMenu setTabIndex={setTabIndex} tabIndex={tabIndex} />
-      {tabIndex === 0 ? <Instructions recipe={recipe} /> : <Header recipe={recipe} />}
+      <Instructions recipe={recipe} tabIndex={tabIndex} />
+      <Header recipe={recipe} index={tabIndex} />
     </div>
   );
 };
