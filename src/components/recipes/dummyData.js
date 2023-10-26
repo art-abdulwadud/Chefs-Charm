@@ -40,7 +40,14 @@ export const dummyData = [
     is_one_top: false,
     updated_at: 1683237600,
     brand_id: null,
-    inspired_by_url: null
+    inspired_by_url: null,
+    instructions: [
+      {
+        appliance: 'oven',
+        id: 70664,
+        display_text: 'Preheat a nonstick electric griddle to 300°F (150°C). (Alternatively, heat a large nonstick skillet over medium-low heat.)'
+      }
+    ]
   },
   {
     draft_status: 'published',
@@ -83,7 +90,14 @@ export const dummyData = [
     is_one_top: false,
     updated_at: 1683237600,
     brand_id: null,
-    inspired_by_url: null
+    inspired_by_url: null,
+    instructions: [
+      {
+        appliance: 'oven',
+        id: 706642,
+        display_text: 'Preheat a nonstick electric griddle to 300°F (150°C). (Alternatively, heat a large nonstick skillet over medium-low heat.)'
+      }
+    ]
   },
   {
     draft_status: 'published',
@@ -126,7 +140,14 @@ export const dummyData = [
     is_one_top: false,
     updated_at: 1683237600,
     brand_id: null,
-    inspired_by_url: null
+    inspired_by_url: null,
+    instructions: [
+      {
+        appliance: 'oven',
+        id: 706643,
+        display_text: 'Preheat a nonstick electric griddle to 300°F (150°C). (Alternatively, heat a large nonstick skillet over medium-low heat.)'
+      }
+    ]
   },
   {
     draft_status: 'published',
@@ -169,7 +190,14 @@ export const dummyData = [
     is_one_top: false,
     updated_at: 1683237600,
     brand_id: null,
-    inspired_by_url: null
+    inspired_by_url: null,
+    instructions: [
+      {
+        appliance: 'oven',
+        id: 706644,
+        display_text: 'Preheat a nonstick electric griddle to 300°F (150°C). (Alternatively, heat a large nonstick skillet over medium-low heat.)'
+      }
+    ]
   },
   {
     draft_status: 'published',
@@ -212,7 +240,14 @@ export const dummyData = [
     is_one_top: false,
     updated_at: 1683237600,
     brand_id: null,
-    inspired_by_url: null
+    inspired_by_url: null,
+    instructions: [
+      {
+        appliance: 'oven',
+        id: 706645,
+        display_text: 'Preheat a nonstick electric griddle to 300°F (150°C). (Alternatively, heat a large nonstick skillet over medium-low heat.)'
+      }
+    ]
   },
   {
     draft_status: 'published',
@@ -255,6 +290,13 @@ export const dummyData = [
     is_one_top: false,
     updated_at: 1683237600,
     brand_id: null,
-    inspired_by_url: null
+    inspired_by_url: null,
+    instructions: [
+      {
+        appliance: 'oven',
+        id: 706646,
+        display_text: 'Preheat a nonstick electric griddle to 300°F (150°C). (Alternatively, heat a large nonstick skillet over medium-low heat.)'
+      }
+    ]
   }
 ];

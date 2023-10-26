@@ -7,6 +7,7 @@ import PreviewInfo from './recipeCard/PreviewInfo';
 import RecipeThumbnail from './recipeCard/RecipeThumbnail';
 import { selectedRecipeAtom } from './Recipes';
 import Header from './recipeCard/opened/Header';
+import Steps from './recipeCard/opened/Steps';
 
 const RecipeCard = ({ recipe, delay }) => {
   const [selectedRecipe] = useAtom(selectedRecipeAtom);
@@ -18,7 +19,7 @@ const RecipeCard = ({ recipe, delay }) => {
   return (
     <motion.div
       className={`relative group flex justify-start duration-500 animate__animated animate__rotateInUpRight overflow-hidden
-      ${selectedRecipe?.id === recipe?.id ? '' : !selectedRecipe ? '' : 'animate__rotateOutUpRight'}`}
+      ${selectedRecipe?.id === recipe?.id || !selectedRecipe ? '' : 'animate__rotateOutUpRight'}`}
       style={{
         borderRadius: '20px',
         animationDelay: `${0.3 * delay}s`
@@ -28,7 +29,10 @@ const RecipeCard = ({ recipe, delay }) => {
       animate={selectedRecipe?.id === recipe?.id ? 'expand' : !selectedRecipe ? 'preview' : 'hidden'}
     >
       <Header recipe={recipe} />
-      <RecipeThumbnail recipe={recipe} />
+      <div className="flex center w-100">
+        <RecipeThumbnail recipe={recipe} />
+        <Steps recipe={recipe} />
+      </div>
       <Yields recipe={recipe} />
       <PreviewInfo recipe={recipe} />
     </motion.div>
