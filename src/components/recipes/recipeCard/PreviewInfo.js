@@ -26,7 +26,7 @@ const PreviewInfo = ({ recipe }) => {
             </span>
           ))}
           </span>
-          <span className="font-light">{recipe?.updated_at ? new Date(recipe.updated_at).toDateString() : new Date().toDateString()}</span>
+          <span className="font-light">{recipe?.approved_at ? new Date(recipe.approved_at).toDateString()?.slice(0, -4) : new Date().toDateString().slice(0, -4)}</span>
         </div>
         <div className="mt-3 dark:text-white text-gray-800">
           <span className="font-medium text-base">{recipe?.name}</span>

@@ -10,14 +10,13 @@ import { selectedRecipeAtom } from './Recipes';
 const RecipeCard = ({ recipe, delay }) => {
   const [selectedRecipe] = useAtom(selectedRecipeAtom);
   const recipeCardVariants = {
-    hidden: { opacity: 0, width: 0, maxHeight: 0, minHeight: 0, transition: { ease: 'easeInOut' } },
-    preview: { opacity: 1, maxHeight: '20rem', minHeight: '20rem', width: '20rem', transition: { ease: 'easeInOut' }, backgroundColor: 'rgba(251, 191, 36, 1)' },
-    expand: { opacity: 1, maxHeight: '1000px', minHeight: '100vh', width: '100vw', backgroundColor: 'rgba(251, 191, 36, 0)' },
-    exit: { opacity: 0, width: 0, maxHeight: 0, minHeight: 0, transition: { ease: 'easeInOut' } }
+    hidden: { width: 0, maxHeight: '0', minHeight: '0', padding: '0 0', transition: { ease: 'easeInOut' } },
+    preview: { maxHeight: '20rem', minHeight: '20rem', width: '20rem', padding: '1rem 1rem', transition: { ease: 'easeInOut', duration: 1 } },
+    expand: { maxHeight: '1000px', minHeight: '100vh', width: '100vw', padding: '0 0', transition: { ease: 'easeInOut', duration: 1 } }
   };
   return (
     <motion.div
-      className="relative group bg-amber-400 flex center duration-500 animate__animated animate__rotateInUpRight overflow-hidden"
+      className="relative group bg-amber-400 flex justify-start duration-500 animate__animated animate__rotateInUpRight overflow-hidden"
       style={{
         borderRadius: '20px',
         animationDelay: `${0.3 * delay}s`
@@ -25,7 +24,6 @@ const RecipeCard = ({ recipe, delay }) => {
       variants={recipeCardVariants}
       initial="hidden"
       animate={selectedRecipe?.id === recipe?.id ? 'expand' : !selectedRecipe ? 'preview' : 'hidden'}
-      exit="exit"
     >
       <RecipeThumbnail recipe={recipe} />
       <Yields recipe={recipe} />

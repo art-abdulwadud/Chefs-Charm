@@ -9,14 +9,14 @@ export const selectedRecipeAtom = atom(null);
 
 const Recipes = () => {
   const [loading, setLoading] = useState(true);
-  const { data } = useQuery(['fetchUsers'], () => {
+  const { data } = useQuery(['fetchUsers'], async () => {
     try {
       // const options = {
       //   method: 'GET',
       //   url: 'https://tasty.p.rapidapi.com/recipes/list',
       //   params: {
       //     from: '0',
-      //     size: '20',
+      //     size: '21',
       //     tags: 'under_30_minutes'
       //   },
       //   headers: {
