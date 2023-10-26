@@ -6,7 +6,7 @@ const Header = ({ recipe }) => {
   const [selectedRecipe] = useAtom(selectedRecipeAtom);
   return (
     <div className={`animate__animated duration-500 absolute top-0 left-0 w-100 flex center column
-    ${selectedRecipe?.id === recipe?.id ? 'animate__rotateInUpRight' : !selectedRecipe ? 'animate__rotateOutUpRight' : 'animate__rotateOutUpRight'}`}
+    ${selectedRecipe?.id === recipe?.id ? 'animate__rotateInUpRight' : !selectedRecipe ? 'animate__rotateOutUpRight h-0' : 'animate__rotateOutUpRight h-0'}`}
     >
       <p className="m-0 font-medium text-2xl text-center">
         {recipe?.name}
