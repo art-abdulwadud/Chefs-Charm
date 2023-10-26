@@ -6,6 +6,7 @@ import Yields from './recipeCard/Yields';
 import PreviewInfo from './recipeCard/PreviewInfo';
 import RecipeThumbnail from './recipeCard/RecipeThumbnail';
 import { selectedRecipeAtom } from './Recipes';
+import Header from './recipeCard/opened/Header';
 
 const RecipeCard = ({ recipe, delay }) => {
   const [selectedRecipe] = useAtom(selectedRecipeAtom);
@@ -26,6 +27,7 @@ const RecipeCard = ({ recipe, delay }) => {
       initial="hidden"
       animate={selectedRecipe?.id === recipe?.id ? 'expand' : !selectedRecipe ? 'preview' : 'hidden'}
     >
+      <Header recipe={recipe} />
       <RecipeThumbnail recipe={recipe} />
       <Yields recipe={recipe} />
       <PreviewInfo recipe={recipe} />

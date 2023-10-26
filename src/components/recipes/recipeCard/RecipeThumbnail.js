@@ -19,7 +19,7 @@ const RecipeThumbnail = ({ recipe }) => {
       animate={selectedRecipe?.id === recipe?.id ? 'expand' : !selectedRecipe ? 'preview' : 'hidden'}
       className={`${selectedRecipe?.id === recipe?.id ? '' : 'group-hover:shadow-xl shadow-lg'}
       group-hover:shadow-gray-800/70 shadow-gray-800/60
-      duration-500`}
+      duration-500 md:mt-15 mt-20`}
       onClick={() => selectedRecipe ? setSelectedRecipe(null) : setSelectedRecipe(recipe)}
     />
   );
