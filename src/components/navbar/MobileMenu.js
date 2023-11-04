@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAnimate } from 'framer-motion';
 import { MdFoodBank, MdOutlineDynamicFeed, MdOutlineTipsAndUpdates } from 'react-icons/md';
-import { FaTags } from 'react-icons/fa6';
 import { useAtom } from 'jotai';
 import NavItemSM from './NavItemSM';
 import { navOpenedAtom } from './NavBar';
@@ -24,7 +23,6 @@ const MobileMenu = () => {
     >
       <div className="space-y-1 px-2 pb-3 pt-2 duration-500">
         <NavItemSM delay={0} label="Recipes" link="" icon={<MdFoodBank />} />
-        <NavItemSM delay={1} label="Tags" link="/tags" icon={<FaTags />} />
         <NavItemSM delay={2} label="Feeds" link="/feeds" icon={<MdOutlineDynamicFeed />} />
         <NavItemSM delay={3} label="Tips" link="/tips" icon={<MdOutlineTipsAndUpdates />} />
       </div>
