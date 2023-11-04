@@ -12,13 +12,13 @@ const RecipeCard = ({ recipe, delay }) => {
   const [selectedRecipe] = useAtom(selectedRecipeAtom);
   const recipeCardVariants = {
     hidden: { width: 0, maxHeight: '0', minHeight: '0', padding: '0 0', backgroundColor: 'rgba(251, 191, 36, 0)', transition: { ease: 'easeInOut', delay: 0.5 } },
-    preview: { maxHeight: '20rem', minHeight: '20rem', width: '20rem', padding: '1rem 1rem', backgroundColor: 'rgba(251, 191, 36, 1)', transition: { ease: 'easeInOut', delay: 0.5 } },
+    preview: { maxHeight: '20rem', minHeight: '20rem', width: '20rem', padding: '1rem 1rem', backgroundColor: 'rgba(251, 191, 36, 1)', transition: { ease: 'easeInOut' } },
     expand: { maxHeight: '1000px', minHeight: '100vh', width: '100vw', padding: '1rem 1rem', backgroundColor: 'rgba(251, 191, 36, 0)', transition: { ease: 'easeInOut', duration: 0.5 } }
   };
   return (
     <motion.div
-      className={`relative group flex justify-start duration-500 animate__animated animate__rotateInUpRight overflow-hidden
-      ${selectedRecipe?.id === recipe?.id || !selectedRecipe ? '' : 'animate__rotateOutUpRight'}`}
+      className={`relative group flex justify-start duration-500 animate__animated animate__fadeInUp overflow-hidden
+      ${selectedRecipe?.id === recipe?.id || !selectedRecipe ? '' : 'animate__fadeOutDown'}`}
       style={{
         borderRadius: '20px',
         animationDelay: `${0.3 * delay}s`
