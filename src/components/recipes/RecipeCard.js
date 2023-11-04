@@ -28,12 +28,14 @@ const RecipeCard = ({ recipe, delay }) => {
       initial="hidden"
       animate={selectedRecipe?.id === recipe?.id ? 'expand' : !selectedRecipe ? 'preview' : 'hidden'}
       onAnimationComplete={(state) => {
+        // Scroll to the top on expanding a recipe card
         if (state === 'expand' && selectedRecipe?.id === recipe?.id) {
           window.scrollTo(0, 0);
           setPreviousSelectedRecipe(recipe);
         }
+        // Scroll to last opened card on going back to recipe cards
+        // and use scale to indicate to the user exactly which card was opened last
         if (state === 'preview' && previousSelectedRecipe && recipe?.id === previousSelectedRecipe.id) {
-          console.log(document.getElementById(`recipe-card-${delay}`));
           setTimeout(() => {
             if (delay > 6) document.getElementById(`recipe-card-${delay}`)?.scrollIntoView();
             if (document.getElementById(`recipe-card-${delay}`)) {
