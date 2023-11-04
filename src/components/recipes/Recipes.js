@@ -41,19 +41,35 @@ const Recipes = () => {
     <>
       <Tags />
       <div className="relative z-10 flex center gap-5 wrap pb-10 pt-3 mx-2 overflow-hidden">
-        {isLoading ? (
-          <div className="relative">
+        {!isLoading ? (
+          <div className="relative flex center flex-col" style={{ minHeight: '50vh' }}>
+            <img
+              src="/logo-tp.png"
+              alt="logo"
+              style={{ height: '200px',
+                width: '200px',
+                animationIterationCount: 'infinite',
+                animationDirection: 'alternate' }}
+              className="relative mb-2 animate__animated animate__bounce animate__slower"
+            />
             <BarLoader
+              className="animate__animated animate__fadeIn"
               cssOverride={{
-                height: '120px',
-                width: '110px',
+                width: '200px',
                 backgroundColor: '#Fbbf24',
                 borderRadius: '10px'
               }}
               color={darkMode ? '#374151' : '#f9fafb'}
             />
-            <img src="/favicon.png" alt="logo" style={{ height: '90px', width: '90px' }} className="absolute top-2 left-2" />
-            <span className="text-white dark:text-gray-700 absolute top-24 left-3">Just a sec 😋</span>
+            <span
+              className="text-amber-400 animate__animated animate__flash animate__slower"
+              style={{
+                animationIterationCount: 'infinite',
+                animationDirection: 'alternate'
+              }}
+            >
+              Just a sec 😋
+            </span>
           </div>
         ) : (
           <>
