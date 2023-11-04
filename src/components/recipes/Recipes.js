@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { atom, useAtom } from 'jotai';
 import BarLoader from 'react-spinners/BarLoader';
@@ -9,13 +9,12 @@ import Tags from './recipeCard/tags/Tags';
 // import { dummyData } from './dummyData';
 
 export const selectedRecipeAtom = atom(null);
-export const selectedTagAtom = atom(null);
+export const selectedTagAtom = atom('under_30_minutes');
 
 const Recipes = () => {
-  const [loading, setLoading] = useState(true);
   const [darkMode] = useAtom(darkModeAtom);
   const [selectedTag] = useAtom(selectedTagAtom);
-  const { data } = useQuery(['fetchUsers'], async () => {
+  const { data, isLoading } = useQuery(['fetchUsers', selectedTag], async () => {
     try {
       const options = {
         method: 'GET',
@@ -38,14 +37,11 @@ const Recipes = () => {
       return [];
     }
   });
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 5000);
-  }, []);
   return (
     <>
       <Tags />
       <div className="relative z-10 flex center gap-5 wrap pb-10 pt-3 mx-2 overflow-hidden">
-        {loading ? (
+        {isLoading ? (
           <div className="relative">
             <BarLoader
               cssOverride={{
