@@ -14,7 +14,7 @@ const PreviewInfo = ({ recipe }) => {
   return (
     <div
       id="preview-info"
-      className={`absolute bottom-3 left-0 h-40 w-100 animate__animated animate__fast z-10 p-2
+      className={`absolute bottom-3 left-1 h-40 w-100 animate__animated animate__fast z-10 p-2
     ${selectedRecipe?.id === recipe?.id ? 'animate__fadeOutDown' : !selectedRecipe ? 'animate__fadeInUp' : 'animate__fadeOutDown'}`}
     >
       <motion.div
