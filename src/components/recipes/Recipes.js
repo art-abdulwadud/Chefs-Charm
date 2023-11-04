@@ -9,7 +9,7 @@ import Tags from './recipeCard/tags/Tags';
 // import { dummyData } from './dummyData';
 
 export const selectedRecipeAtom = atom(null);
-export const selectedTagAtom = atom('under_30_minutes');
+export const selectedTagAtom = atom('brunch');
 
 const Recipes = () => {
   const [darkMode] = useAtom(darkModeAtom);
