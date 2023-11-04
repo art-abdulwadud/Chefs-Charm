@@ -40,7 +40,7 @@ const RecipeCard = ({ recipe, delay }) => {
         if (state === 'preview' && previousSelectedRecipe && recipe?.id === previousSelectedRecipe.id) {
           setTimeout(() => {
             // Scroll to last opened card
-            if (delay > 6 || isSmall) document.getElementById(`recipe-card-${delay}`)?.scrollIntoView();
+            if (delay > 2 || isSmall) document.getElementById(`recipe-card-${delay}`)?.scrollIntoView();
             // Edit its scale property to enlarge it and then set it back to its original size
             if (document.getElementById(`recipe-card-${delay}`)) {
               setTimeout(() => document.getElementById(`recipe-card-${delay}`).style.scale = '1.1', 500);
