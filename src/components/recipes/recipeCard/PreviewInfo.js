@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { useAtom } from 'jotai';
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -32,7 +33,7 @@ const PreviewInfo = ({ recipe }) => {
             }}
           >{recipe?.credits?.map((key, index) => (
             <span
-              key={key.name}
+              key={index}
               className="font-medium mr-1"
             >{key.name}{index === recipe.credits.length - 1 ? '' : ','}
             </span>
