@@ -6,7 +6,7 @@ const Instructions = ({ recipe, tabIndex }) => {
     ${tabIndex === 0 ? 'animate__fadeIn max-h-[20rem] relative' : 'animate__fadeOut max-h-[0rem]'}`}
     >
       {recipe?.instructions?.map((key) => (
-        <li key={key.id} className="text-white">{key.display_text || ''}</li>
+        <li key={key.id} className="dark:text-white text-gray-800">{key.display_text || ''}</li>
       ))}
     </ul>
   );

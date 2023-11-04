@@ -13,7 +13,7 @@ const Steps = ({ recipe }) => {
   }, [selectedRecipe]);
   return (
     <div
-      className={`bg-gray-800 text-white px-2 py-4 pl-7
+      className={`dark:bg-gray-800 dark:text-white bg-white text-gray-800  px-2 py-4 pl-7
     overflow-scroll animate__animated z-0 animate__fast rounded-lg mt-4 md:mt-0
     ${selectedRecipe?.id === recipe?.id
         ? 'animate__slideInDown' : 'animate__slideOutDown'}`}
