@@ -1,13 +1,22 @@
 import { useAtom } from 'jotai';
 import React from 'react';
+import { motion } from 'framer-motion';
 import { FaBowlFood } from 'react-icons/fa6';
 import { selectedRecipeAtom } from '../Recipes';
 
 const Yields = ({ recipe }) => {
   const [selectedRecipe] = useAtom(selectedRecipeAtom);
+  const yieldsVariants = {
+    hidden: { maxWidth: '0', opacity: 0, transition: { ease: 'easeInOut' } },
+    preview: { maxWidth: '20rem', opacity: 1, transition: { ease: 'easeInOut', duration: 1 } }
+  };
   return (
-    <div className={`absolute top-3 left-0 px-3 pt-1 animate__animated z-10
+    <motion.div
+      className={`absolute top-3 left-0 px-3 pt-1  z-10 overflow-hidden
     ${selectedRecipe?.id === recipe?.id ? 'animate__rotateOutUpRight' : !selectedRecipe ? 'animate__rotateInUpRight' : 'animate__rotateOutUpRight'}`}
+      variants={yieldsVariants}
+      initial="hidden"
+      animate={selectedRecipe?.id === recipe?.id ? 'hidden' : !selectedRecipe ? 'preview' : 'hidden'}
     >
       <div
         className="p-1 px-2 flex gap-1 items-center
@@ -23,7 +32,7 @@ const Yields = ({ recipe }) => {
             ? recipe.yields : ''}
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
