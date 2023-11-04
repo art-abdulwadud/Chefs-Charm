@@ -11,8 +11,8 @@ import Steps from './recipeCard/opened/Steps';
 const RecipeCard = ({ recipe, delay }) => {
   const [selectedRecipe] = useAtom(selectedRecipeAtom);
   const recipeCardVariants = {
-    hidden: { width: 0, maxHeight: '0', minHeight: '0', padding: '0 0', backgroundColor: 'rgba(251, 191, 36, 0)', transition: { ease: 'easeInOut', delay: 0.5 } },
-    preview: { maxHeight: '20rem', minHeight: '20rem', width: '20rem', padding: '1rem 1rem', backgroundColor: 'rgba(251, 191, 36, 1)', transition: { ease: 'easeInOut' } },
+    hidden: { width: 0, maxHeight: '0', minHeight: '0', padding: '0 0', backgroundColor: 'rgba(251, 191, 36, 0)', transition: { ease: 'easeInOut' } },
+    preview: { maxHeight: '20rem', minHeight: '20rem', width: '20rem', padding: '1rem 1rem', backgroundColor: 'rgba(251, 191, 36, 1)', transition: { ease: 'easeInOut', delay: 0.5 } },
     expand: { maxHeight: '1000px', minHeight: '100vh', width: '100vw', padding: '1rem 1rem', backgroundColor: 'rgba(251, 191, 36, 0)', transition: { ease: 'easeInOut', duration: 0.5 } }
   };
   return (

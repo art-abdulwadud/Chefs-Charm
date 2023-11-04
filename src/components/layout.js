@@ -6,7 +6,14 @@ import './layout.css';
 import './fonts.css';
 import NavBar from './navbar/NavBar';
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      staleTime: 300000
+    }
+  }
+});
 export const isBrowser = typeof window !== 'undefined';
 // A global state for identifying the current page
 export const pageAtom = atom(() => isBrowser ? window.location.pathname : '');
