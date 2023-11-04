@@ -8,10 +8,12 @@ import { darkModeAtom } from '../layout';
 // import { dummyData } from './dummyData';
 
 export const selectedRecipeAtom = atom(null);
+export const selectedTagAtom = atom(null);
 
 const Recipes = () => {
   const [loading, setLoading] = useState(true);
   const [darkMode] = useAtom(darkModeAtom);
+  const [selectedTag] = useAtom(selectedTagAtom);
   const { data } = useQuery(['fetchUsers'], async () => {
     try {
       const options = {
@@ -20,7 +22,7 @@ const Recipes = () => {
         params: {
           from: '0',
           size: '21',
-          tags: 'under_30_minutes'
+          ...selectedTag ? { tags: selectedTag } : {}
         },
         headers: {
           'X-RapidAPI-Key': process.env.GATSBY_API_KEY,
