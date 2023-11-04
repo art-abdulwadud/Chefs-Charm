@@ -8,17 +8,17 @@ import { selectedRecipeAtom } from '../Recipes';
 const PreviewInfo = ({ recipe }) => {
   const [selectedRecipe, setSelectedRecipe] = useAtom(selectedRecipeAtom);
   const previewVariants = {
-    hidden: { width: '0', maxHeight: '0', minHeight: '0', padding: '0', transition: { ease: 'easeInOut' } },
-    preview: { maxHeight: '9rem', minHeight: '9rem', width: '100%', padding: '0.5rem', transition: { ease: 'easeInOut' } }
+    hidden: { width: '0', padding: '0', transition: { ease: 'easeInOut', duration: 0.5 } },
+    preview: { width: '100%', padding: '0.5rem', transition: { ease: 'easeInOut', duration: 0.5 } }
   };
   return (
     <div
       id="preview-info"
-      className={`absolute bottom-3 left-1 h-40 w-100 animate__animated animate__fast z-10 p-2
+      className={`absolute bottom-3 left-1 h-40 w-100 z-10 p-2
     ${selectedRecipe?.id === recipe?.id ? 'animate__fadeOutDown' : !selectedRecipe ? 'animate__fadeInUp' : 'animate__fadeOutDown'}`}
     >
       <motion.div
-        className="shadow-xl backdrop-blur-sm bg-white/75 dark:bg-gray-800/70 rounded-lg overflow-hidden"
+        className="shadow-xl backdrop-blur-sm h-36 bg-white/60 dark:bg-gray-800/60 rounded-lg overflow-hidden"
         variants={previewVariants}
         initial="hidden"
         animate={selectedRecipe?.id === recipe?.id ? 'hidden' : !selectedRecipe ? 'preview' : 'hidden'}

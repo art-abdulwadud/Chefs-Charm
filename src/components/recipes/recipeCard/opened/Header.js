@@ -27,6 +27,7 @@ const Header = ({ recipe, index }) => {
           <span className="font-medium text-xs md:text-sm">{recipe?.approved_at ? new Date(recipe.approved_at).toDateString()?.slice(0, -4) : new Date().toDateString().slice(0, -4)}</span>
         </span>
       </div>
+      <span className="my-3">{recipe.description || ''}</span>
     </div>
   );
 };
