@@ -27,8 +27,8 @@ const RecipeCard = ({ recipe, delay }) => {
       initial="hidden"
       animate={selectedRecipe?.id === recipe?.id ? 'expand' : !selectedRecipe ? 'preview' : 'hidden'}
     >
-      <div className={`flex w-100 animate__animated steps-wrapper-${recipe.id}
-      ${selectedRecipe?.id === recipe?.id ? 'flex-col md:flex-row' : ''}`}
+      <div className={`flex w-100 animate__animated steps-wrapper-${recipe.id} flex-col md:flex-row
+      ${selectedRecipe?.id === recipe?.id ? '' : ''}`}
       >
         <RecipeThumbnail recipe={recipe} />
         <Steps recipe={recipe} />

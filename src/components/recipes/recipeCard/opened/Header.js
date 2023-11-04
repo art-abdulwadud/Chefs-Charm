@@ -4,10 +4,10 @@ import { FaBowlFood, FaRegCalendarDays } from 'react-icons/fa6';
 
 const Header = ({ recipe, index }) => {
   return (
-    <div className={`animate__animated w-100 flex left column z-20
+    <div className={`animate__animated w-100 flex left column z-20 animate__faster
     ${index === 1 ? 'animate__fadeIn max-h-[20rem]' : 'animate__fadeOut max-h-[0rem] absolute top-[4.1rem] z-0'}`}
     >
-      <p className="m-0 font-bold text-2xl text-center text-white p-2 mb-2 dark:rounded-xl">
+      <p className="m-0 font-bold text-2xl text-white p-2 mb-2 dark:rounded-xl">
         {recipe?.name}
       </p>
       <div className="flex justify-evenly gap-2 text-white">

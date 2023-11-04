@@ -2,7 +2,7 @@ import React from 'react';
 
 const Instructions = ({ recipe, tabIndex }) => {
   return (
-    <ul className={`list-disc animate__animated
+    <ul className={`list-disc animate__animated animate__fatser
     ${tabIndex === 0 ? 'animate__fadeIn max-h-[20rem] relative' : 'animate__fadeOut max-h-[0rem]'}`}
     >
       {recipe?.instructions?.map((key) => (
