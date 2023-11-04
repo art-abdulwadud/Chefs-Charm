@@ -194,3 +194,25 @@ img {
     justify-content: center;
   }
 }
+
+/*** Custom Scrollbar ***/
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(31 41 55 / var(--tw-text-opacity));
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(251 191 36 / var(--tw-text-opacity));
+}
