@@ -5,6 +5,7 @@ import { atom, useAtom } from 'jotai';
 import BarLoader from 'react-spinners/BarLoader';
 import RecipeCard from './RecipeCard';
 import { darkModeAtom } from '../layout';
+import Tags from './recipeCard/tags/Tags';
 // import { dummyData } from './dummyData';
 
 export const selectedRecipeAtom = atom(null);
@@ -41,29 +42,32 @@ const Recipes = () => {
     setTimeout(() => setLoading(false), 5000);
   }, []);
   return (
-    <div className="relative z-10 flex center gap-5 wrap py-10 mx-2 overflow-hidden">
-      {loading ? (
-        <div className="relative">
-          <BarLoader
-            cssOverride={{
-              height: '120px',
-              width: '110px',
-              backgroundColor: '#Fbbf24',
-              borderRadius: '10px'
-            }}
-            color={darkMode ? '#374151' : '#f9fafb'}
-          />
-          <img src="/favicon.png" alt="logo" style={{ height: '90px', width: '90px' }} className="absolute top-2 left-2" />
-          <span className="text-white dark:text-gray-700 absolute top-24 left-3">Just a sec 😋</span>
-        </div>
-      ) : (
-        <>
-          {data?.map((key, index) => (
-            <RecipeCard key={key.id} recipe={key} delay={index} />
-          ))}
-        </>
-      )}
-    </div>
+    <>
+      <Tags />
+      <div className="relative z-10 flex center gap-5 wrap pb-10 pt-3 mx-2 overflow-hidden">
+        {loading ? (
+          <div className="relative">
+            <BarLoader
+              cssOverride={{
+                height: '120px',
+                width: '110px',
+                backgroundColor: '#Fbbf24',
+                borderRadius: '10px'
+              }}
+              color={darkMode ? '#374151' : '#f9fafb'}
+            />
+            <img src="/favicon.png" alt="logo" style={{ height: '90px', width: '90px' }} className="absolute top-2 left-2" />
+            <span className="text-white dark:text-gray-700 absolute top-24 left-3">Just a sec 😋</span>
+          </div>
+        ) : (
+          <>
+            {data?.map((key, index) => (
+              <RecipeCard key={key.id} recipe={key} delay={index} />
+            ))}
+          </>
+        )}
+      </div>
+    </>
   );
 };
 
