@@ -15,6 +15,7 @@ const Steps = ({ recipe }) => {
     <div
       className={`dark:bg-gray-800 dark:text-white bg-white text-gray-800  px-2 py-4 pl-7
     overflow-scroll animate__animated z-0 animate__fast rounded-lg mt-4 md:mt-0
+    shadow-md shadow-gray-800/40 dark:shadow-white/10
     ${selectedRecipe?.id === recipe?.id
         ? 'animate__slideInDown' : 'animate__slideOutDown'}`}
       style={{ maxHeight: '30rem', minHeight: '25rem', maxWidth: '60rem', minWidth: '20rem' }}
