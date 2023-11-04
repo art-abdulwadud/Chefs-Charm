@@ -41,9 +41,8 @@ const PreviewInfo = ({ recipe }) => {
           </span>
           <span className="font-light">{recipe?.approved_at ? new Date(recipe.approved_at).toDateString()?.slice(0, -4) : new Date().toDateString().slice(0, -4)}</span>
         </div>
-        <div className="mt-3 dark:text-white text-gray-800">
-          <span className="font-medium text-base">{recipe?.name}</span>
-          <br />
+        <div className="mt-3 dark:text-white text-gray-800 flex flex-col">
+          <span className="font-medium text-base short-text h-1 m-0" style={{ WebkitLineClamp: '1' }}>{recipe?.name}</span>
           <span className="font-light text-xs short-text">{recipe?.description}</span>
         </div>
         <button
