@@ -7,10 +7,12 @@ import PreviewInfo from './recipeCard/PreviewInfo';
 import RecipeThumbnail from './recipeCard/RecipeThumbnail';
 import { selectedRecipeAtom } from './Recipes';
 import Steps from './recipeCard/opened/Steps';
+import { useMediaQuery } from '../useMediaQuery';
 
 const RecipeCard = ({ recipe, delay }) => {
   const [selectedRecipe] = useAtom(selectedRecipeAtom);
   const [previousSelectedRecipe, setPreviousSelectedRecipe] = useState(null);
+  const isSmall = useMediaQuery('(max-width: 674px)');
   const recipeCardVariants = {
     hidden: { opacity: 0, width: 0, maxHeight: '0', minHeight: '0', padding: '0 0', backgroundColor: 'rgba(251, 191, 36, 0)', transition: { ease: 'easeInOut', duration: 1 } },
     preview: { opacity: 1, maxHeight: '20rem', minHeight: '20rem', width: '20rem', padding: '1rem 1rem', backgroundColor: 'rgba(251, 191, 36, 1)', transition: { ease: 'easeInOut' } },
@@ -37,7 +39,9 @@ const RecipeCard = ({ recipe, delay }) => {
         // and use scale to indicate to the user exactly which card was opened last
         if (state === 'preview' && previousSelectedRecipe && recipe?.id === previousSelectedRecipe.id) {
           setTimeout(() => {
-            if (delay > 6) document.getElementById(`recipe-card-${delay}`)?.scrollIntoView();
+            // Scroll to last opened card
+            if (delay > 6 || isSmall) document.getElementById(`recipe-card-${delay}`)?.scrollIntoView();
+            // Edit its scale property to enlarge it and then set it back to its original size
             if (document.getElementById(`recipe-card-${delay}`)) {
               setTimeout(() => document.getElementById(`recipe-card-${delay}`).style.scale = '1.1', 500);
               setTimeout(() => document.getElementById(`recipe-card-${delay}`).style.scale = '1', 1000);
