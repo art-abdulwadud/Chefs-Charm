@@ -40,8 +40,8 @@ const Recipes = () => {
   return (
     <>
       <Tags />
-      <div className="relative z-10 flex center gap-5 wrap pb-10 pt-3 mx-2 overflow-hidden">
-        {!isLoading ? (
+      <div className="relative z-10 flex center gap-5 wrap pb-10 pt-3 mx-2">
+        {isLoading ? (
           <div className="relative flex center flex-col" style={{ minHeight: '50vh' }}>
             <img
               src="/logo-tp.png"
@@ -74,7 +74,7 @@ const Recipes = () => {
         ) : (
           <>
             {data?.map((key, index) => (
-              <RecipeCard key={key.id} recipe={key} delay={index} />
+              <RecipeCard key={key.id} recipe={key} index={index} />
             ))}
           </>
         )}

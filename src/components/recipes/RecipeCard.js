@@ -1,5 +1,5 @@
 // import { useAtom } from 'jotai';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useAtom } from 'jotai';
 import Yields from './recipeCard/Yields';
@@ -9,42 +9,48 @@ import { selectedRecipeAtom } from './Recipes';
 import Steps from './recipeCard/opened/Steps';
 import { useMediaQuery } from '../useMediaQuery';
 
-const RecipeCard = ({ recipe, delay }) => {
+const RecipeCard = ({ recipe, index }) => {
   const [selectedRecipe] = useAtom(selectedRecipeAtom);
   const [previousSelectedRecipe, setPreviousSelectedRecipe] = useState(null);
   const isSmall = useMediaQuery('(max-width: 674px)');
   const recipeCardVariants = {
-    hidden: { opacity: 0, width: 0, maxHeight: '0', minHeight: '0', padding: '0 0', backgroundColor: 'rgba(251, 191, 36, 0)', transition: { ease: 'easeInOut', duration: 1 } },
-    preview: { opacity: 1, maxHeight: '20rem', minHeight: '20rem', width: '20rem', padding: '1rem 1rem', backgroundColor: 'rgba(251, 191, 36, 1)', transition: { ease: 'easeInOut' } },
-    expand: { opacity: 1, maxHeight: '1000px', minHeight: '100vh', width: '100vw', padding: '1rem 1rem', backgroundColor: 'rgba(251, 191, 36, 0)', transition: { ease: 'easeInOut', duration: 1 } }
+    hidden: { opacity: 0, width: 0, maxHeight: '0', minHeight: '0', padding: '0 0', transition: { ease: 'easeInOut', duration: 0.2 } },
+    preview: { opacity: 1, maxHeight: '20rem', minHeight: '20rem', width: '20rem', padding: '1rem 1rem', transition: { ease: 'easeInOut' } },
+    expand: { opacity: 1, maxHeight: '1000px', minHeight: '100vh', width: '100vw', padding: '1rem 1rem', transition: { ease: 'easeInOut', duration: 1 } }
   };
+  useEffect(() => {
+    return () => setPreviousSelectedRecipe(null);
+  }, []);
   return (
     <motion.div
-      className="relative group flex justify-start duration-500 overflow-hidden"
+      className="relative group flex justify-start"
       style={{
         borderRadius: '20px',
-        animationDelay: `${0.3 * delay}s`
+        animationDelay: `${0.3 * index}s`
       }}
-      id={`recipe-card-${delay}`}
+      id={`recipe-card-${index}`}
       variants={recipeCardVariants}
       initial="hidden"
+      exit="hidden"
       animate={selectedRecipe?.id === recipe?.id ? 'expand' : !selectedRecipe ? 'preview' : 'hidden'}
-      onAnimationComplete={(state) => {
+      onAnimationStart={(state) => {
         // Scroll to the top on expanding a recipe card
         if (state === 'expand' && selectedRecipe?.id === recipe?.id) {
           window.scrollTo(0, 0);
           setPreviousSelectedRecipe(recipe);
         }
+      }}
+      onAnimationComplete={(state) => {
         // Scroll to last opened card on going back to recipe cards
         // and use scale to indicate to the user exactly which card was opened last
         if (state === 'preview' && previousSelectedRecipe && recipe?.id === previousSelectedRecipe.id) {
           setTimeout(() => {
             // Scroll to last opened card
-            if (delay > 2 || isSmall) document.getElementById(`recipe-card-${delay}`)?.scrollIntoView();
+            if (index > 2 || isSmall) document.getElementById(`recipe-card-${index}`)?.scrollIntoView();
             // Edit its scale property to enlarge it and then set it back to its original size
-            if (document.getElementById(`recipe-card-${delay}`)) {
-              setTimeout(() => document.getElementById(`recipe-card-${delay}`).style.scale = '1.1', 500);
-              setTimeout(() => document.getElementById(`recipe-card-${delay}`).style.scale = '1', 1000);
+            if (document.getElementById(`recipe-card-${index}`)) {
+              setTimeout(() => document.getElementById(`recipe-card-${index}`).style.scale = '1.1', 500);
+              setTimeout(() => document.getElementById(`recipe-card-${index}`).style.scale = '1', 1000);
             }
           }, 500);
           setPreviousSelectedRecipe(null);
