@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { FaCircleChevronRight } from 'react-icons/fa6';
 import { selectedRecipeAtom } from '../Recipes';
 
-const PreviewInfo = ({ recipe }) => {
+const PreviewInfo = ({ recipe, setPreviousSelectedRecipe }) => {
   const [selectedRecipe, setSelectedRecipe] = useAtom(selectedRecipeAtom);
   const previewVariants = {
     hidden: { width: '0', padding: '0', transition: { ease: 'easeInOut', duration: 0.5 } },
@@ -48,7 +48,13 @@ const PreviewInfo = ({ recipe }) => {
         <button
           type="button"
           className="border-0 flex items-center justify-start mt-2 text-amber-700 dark:text-amber-400 gap-2 cursor"
-          onClick={() => selectedRecipe ? setSelectedRecipe(null) : setSelectedRecipe(recipe)}
+          onClick={() => {
+            selectedRecipe ? setPreviousSelectedRecipe(recipe) : setPreviousSelectedRecipe(null);
+            selectedRecipe
+              ? null
+              : setTimeout(() => window.scrollTo(0, 0), 100);
+            selectedRecipe ? setSelectedRecipe(null) : setSelectedRecipe(recipe);
+          }}
         >
           <span className="text-xs font-medium">Read More</span>
           <FaCircleChevronRight className="text-sm" />

@@ -40,7 +40,7 @@ const Recipes = () => {
   return (
     <>
       <Tags />
-      <div className="relative z-10 flex center gap-5 wrap pb-10 pt-3 mx-2">
+      <div className="relative z-10 flex center gap-5 wrap pb-10 pt-3 mx-2 overflow-hidden">
         {isLoading ? (
           <div className="relative flex center flex-col" style={{ minHeight: '50vh' }}>
             <img
