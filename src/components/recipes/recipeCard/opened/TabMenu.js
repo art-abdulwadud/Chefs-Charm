@@ -2,8 +2,9 @@ import { useAtom } from 'jotai';
 import React from 'react';
 import { FaCircleLeft } from 'react-icons/fa6';
 import { selectedRecipeAtom } from '../../Recipes';
+import animateCSS from '../../../animate';
 
-const TabMenu = ({ tabIndex, setTabIndex }) => {
+const TabMenu = ({ recipe, tabIndex, setTabIndex }) => {
   const activeTab = 'text-amber-400 border-amber-400 ';
   const [, setSelectedRecipe] = useAtom(selectedRecipeAtom);
   const inactiveTab = 'border-white/5';
@@ -12,7 +13,16 @@ const TabMenu = ({ tabIndex, setTabIndex }) => {
       <span
         className={`flex center gap-1 p-1 cursor font-medium duration-200
         text-red-500`}
-        onClick={() => setSelectedRecipe(null)}
+        onClick={() => {
+          setSelectedRecipe(null);
+          setTimeout(() => {
+            const thumbnail = document.querySelector(`#recipe-card-${recipe?.id}`);
+            if (thumbnail) {
+              thumbnail.scrollIntoView();
+              animateCSS(thumbnail, 'flash');
+            }
+          }, 1100);
+        }}
       ><FaCircleLeft /> Back
       </span>
       <span

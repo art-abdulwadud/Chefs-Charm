@@ -16,9 +16,10 @@ const RecipeThumbnail = ({ recipe }) => {
       alt={recipe?.slug || ''}
       variants={thumbnailVariants}
       initial="hidden"
+      id={`recipe-card-${recipe?.id}`}
       animate={selectedRecipe?.id === recipe?.id ? 'expand' : !selectedRecipe ? 'preview' : 'hidden'}
       className={`${selectedRecipe?.id === recipe?.id ? '' : 'group-hover:shadow-xl shadow-lg'}
-      group-hover:shadow-gray-800/70 shadow-gray-800/60 z-10
+      group-hover:shadow-gray-800/70 shadow-gray-800/60 z-10 animate__slow
       duration-500 ${selectedRecipe?.id === recipe?.id ? 'md:mt-2 md:-mr-2' : 'm-0'}`}
       style={{ minWidth: '320px' }}
     />

@@ -23,7 +23,6 @@ const RecipeCard = ({ recipe, index }) => {
         borderRadius: '20px',
         animationDelay: previousSelectedRecipe ? '0.3s' : `${0.3 * index}s`
       }}
-      id={`recipe-card-${index}`}
     >
       <div
         className={`flex w-100  steps-wrapper-${recipe.id} flex-col md:flex-row

@@ -28,7 +28,7 @@ const Steps = ({ recipe }) => {
         ? 'animate__fadeInDown' : 'animate__slideOutDown'}`}
       style={{ animationDuration: selectedRecipe ? '2s' : '1s' }}
     >
-      <TabMenu setTabIndex={setTabIndex} tabIndex={tabIndex} />
+      <TabMenu recipe={recipe} setTabIndex={setTabIndex} tabIndex={tabIndex} />
       <Instructions recipe={recipe} tabIndex={tabIndex} />
       <Header recipe={recipe} index={tabIndex} />
     </motion.div>
