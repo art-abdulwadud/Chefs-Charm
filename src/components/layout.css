@@ -164,23 +164,24 @@ img {
 /*  Recipe Card */
 .recipe-card {
   opacity: 1;
-  height: 20rem;
+  min-height: 20rem;
+  max-height: 20rem;
   width: 20rem;
   transition: all 1s ease-in-out;
 }
 
 .recipe-card.expand {
   opacity: 1;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 1000px;
   width: 100vw;
-  transition: all 1s ease-in-out;
 }
 
 .recipe-card.hidden-card {
-  height: 0rem;
+  min-height: 0rem;
+  max-height: 0rem;
   width: 0rem;
   opacity: 0;
-  transition: all 1s ease-in-out;
 }
 
 /* Shorten text */

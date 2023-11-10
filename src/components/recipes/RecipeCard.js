@@ -6,12 +6,10 @@ import PreviewInfo from './recipeCard/PreviewInfo';
 import RecipeThumbnail from './recipeCard/RecipeThumbnail';
 import { selectedRecipeAtom } from './Recipes';
 import Steps from './recipeCard/opened/Steps';
-// import { useMediaQuery } from '../useMediaQuery';
 
 const RecipeCard = ({ recipe, index }) => {
   const [selectedRecipe] = useAtom(selectedRecipeAtom);
   const [previousSelectedRecipe, setPreviousSelectedRecipe] = useState(null);
-  // const isSmall = useMediaQuery('(max-width: 674px)');
   useEffect(() => {
     return () => setPreviousSelectedRecipe(null);
   }, []);
@@ -25,11 +23,11 @@ const RecipeCard = ({ recipe, index }) => {
       }}
     >
       <div
-        className={`flex w-100  steps-wrapper-${recipe.id} flex-col md:flex-row
+        className={`flex w-100 flex-col md:flex-row
       ${selectedRecipe?.id === recipe?.id ? '' : ''}`}
       >
         <RecipeThumbnail recipe={recipe} />
-        <Steps recipe={recipe} />
+        <Steps recipe={recipe} index={index} />
       </div>
       <Yields recipe={recipe} />
       <PreviewInfo recipe={recipe} setPreviousSelectedRecipe={setPreviousSelectedRecipe} />

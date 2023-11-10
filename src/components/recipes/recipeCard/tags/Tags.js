@@ -3,7 +3,7 @@ import Tag from './Tag';
 
 const Tags = () => {
   return (
-    <ul className="relative list-none flex flex-nowrap overflow-x-auto space-x-2 md:justify-center py-2 mt-2 z-10" style={{ maxWidth: '100%' }}>
+    <ul className="relative list-none flex flex-nowrap overflow-x-auto space-x-2 md:justify-center pl-4 md:pl-0 py-2 mt-2 z-10" style={{ maxWidth: '100%' }}>
       <Tag label="brunch" delay={0} />
       <Tag label="breakfast" delay={1} />
       <Tag label="under_30_minutes" delay={2} />

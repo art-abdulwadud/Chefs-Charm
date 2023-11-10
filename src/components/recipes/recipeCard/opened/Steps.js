@@ -6,7 +6,7 @@ import TabMenu from './TabMenu';
 import Instructions from './Instructions';
 import Header from './Header';
 
-const Steps = ({ recipe }) => {
+const Steps = ({ recipe, index }) => {
   const [selectedRecipe] = useAtom(selectedRecipeAtom);
   const [tabIndex, setTabIndex] = useState(0);
   const variants = {
@@ -22,13 +22,13 @@ const Steps = ({ recipe }) => {
       initial="hidden"
       animate={selectedRecipe?.id === recipe?.id ? 'visible' : 'hidden'}
       className={`dark:bg-gray-800 dark:text-white bg-white text-gray-800  px-2 py-4 pl-7
-    overflow-x-hidden animate__animated z-0 animate__fast rounded-lg mt-4 md:mt-0 duration-500
+    overflow-hidden animate__animated z-0 animate__fast rounded-lg mt-4 md:mt-0 duration-500
     shadow-md shadow-gray-800/40 dark:shadow-white/10
     ${selectedRecipe?.id === recipe?.id
         ? 'animate__fadeInDown' : 'animate__slideOutDown'}`}
       style={{ animationDuration: selectedRecipe ? '2s' : '1s' }}
     >
-      <TabMenu recipe={recipe} setTabIndex={setTabIndex} tabIndex={tabIndex} />
+      <TabMenu recipe={recipe} setTabIndex={setTabIndex} tabIndex={tabIndex} recipeIndex={index} />
       <Instructions recipe={recipe} tabIndex={tabIndex} />
       <Header recipe={recipe} index={tabIndex} />
     </motion.div>
