@@ -14,7 +14,7 @@ export const recipeCountAtom = atom(null);
 
 const Recipes = () => {
   const [darkMode] = useAtom(darkModeAtom);
-  const [, setRecipeCount] = useAtom(recipeCountAtom);
+  const [recipeCount, setRecipeCount] = useAtom(recipeCountAtom);
   const [selectedTag] = useAtom(selectedTagAtom);
   const { data, isLoading } = useQuery(['fetchUsers', selectedTag], async () => {
     try {
@@ -82,17 +82,19 @@ const Recipes = () => {
           </>
         )}
       </div>
-      <div className="relative z-20 py-3 flex center">
-        <button
-          type="button"
-          className={`flex flex-col center
+      {!isLoading && recipeCount ? (
+        <div className="relative z-20 py-3 flex center">
+          <button
+            type="button"
+            className={`flex flex-col center
         border-none py-2 px-4 rounded-2xl bg-amber-400 text-gray-800
         `}
-        >
-          <span className="text-xs">20 / 2000</span>
-          <span className="text-lg">Show More</span>
-        </button>
-      </div>
+          >
+            <span className="text-xs">{data?.length} / {recipeCount}</span>
+            <span className="text-lg">Show More</span>
+          </button>
+        </div>
+      ) : null}
     </>
   );
 };
