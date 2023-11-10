@@ -10,9 +10,11 @@ import Tags from './recipeCard/tags/Tags';
 
 export const selectedRecipeAtom = atom(null);
 export const selectedTagAtom = atom('brunch');
+export const recipeCountAtom = atom(null);
 
 const Recipes = () => {
   const [darkMode] = useAtom(darkModeAtom);
+  const [, setRecipeCount] = useAtom(recipeCountAtom);
   const [selectedTag] = useAtom(selectedTagAtom);
   const { data, isLoading } = useQuery(['fetchUsers', selectedTag], async () => {
     try {
@@ -30,6 +32,7 @@ const Recipes = () => {
         }
       };
       const response = await axios.request(options);
+      setRecipeCount(response.data?.count || null);
       return response.data?.results;
       // return dummyData;
     } catch (error) {
