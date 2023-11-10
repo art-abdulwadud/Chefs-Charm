@@ -235,11 +235,8 @@ img {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(31 41 55 / var(--tw-text-opacity));
-  border-radius: 20px;
+  --tw-bg-opacity: 1;
+    background-color: rgb(251 191 36 / var(--tw-bg-opacity));
+    border-radius: 20px;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(251 191 36 / var(--tw-text-opacity));
-}
