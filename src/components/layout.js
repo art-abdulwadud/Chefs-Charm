@@ -44,7 +44,7 @@ const Layout = ({ children }) => {
   }, [darkMode]);
   return (
     <QueryClientProvider client={queryClient}>
-      <main className={`relative h-100vh z-10 ${darkMode ? 'dark' : ''} content-wrapper`}>
+      <main className={`relative h-100vh z-10 ${darkMode ? 'dark' : ''} content-wrapper overflow-hidden`}>
         <div className="absolute content-background h-100vh w-100 pattern-bg bg-white dark:bg-gray-800 bg-pattern-light dark:bg-pattern-dark dark z-0 m-0" />
         <NavBar />
         {children}
