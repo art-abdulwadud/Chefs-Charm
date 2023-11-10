@@ -43,7 +43,7 @@ const Recipes = () => {
   return (
     <>
       <Tags />
-      <div className="relative z-10 flex center gap-5 wrap pb-10 pt-3 mx-2 overflow-hidden">
+      <div className="relative z-10 flex center gap-5 wrap pb-2 pt-3 mx-2 overflow-hidden">
         {isLoading ? (
           <div className="relative flex center flex-col" style={{ minHeight: '50vh' }}>
             <img
@@ -81,6 +81,17 @@ const Recipes = () => {
             ))}
           </>
         )}
+      </div>
+      <div className="relative z-20 py-3 flex center">
+        <button
+          type="button"
+          className={`flex flex-col center
+        border-none py-2 px-4 rounded-2xl bg-amber-400 text-gray-800
+        `}
+        >
+          <span className="text-xs">20 / 2000</span>
+          <span className="text-lg">Show More</span>
+        </button>
       </div>
     </>
   );
