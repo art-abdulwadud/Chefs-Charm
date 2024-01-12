@@ -15,8 +15,7 @@ export const queryClient = new QueryClient({
   }
 });
 export const isBrowser = typeof window !== 'undefined';
-// A global state for identifying the current page
-export const pageAtom = atom(() => isBrowser ? window.location.pathname : '');
+
 // A global state for identifying the theme selected by the user
 // Initially, its value is determined by darkMode item in localStorage
 export const darkModeAtom = atom(isBrowser && window.localStorage.getItem('darkMode')?.toString() === 'true');
