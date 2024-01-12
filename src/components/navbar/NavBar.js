@@ -1,12 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MdFoodBank, MdOutlineDynamicFeed, MdOutlineTipsAndUpdates } from 'react-icons/md';
 import { atom } from 'jotai';
 import NavToggler from './NavToggler';
-import NavItemLG from './NavItemLG';
 import NavLogo from './NavLogo';
 import MobileMenu from './MobileMenu';
 import ThemeToggler from './ThemeToggler';
+import SearchBar from '../searchbar/SearchBar';
 
 export const navOpenedAtom = atom(false);
 
@@ -31,9 +30,7 @@ const NavBar = () => {
               <NavLogo />
               <div className="hidden md:mx-auto md:block">
                 <div className="flex space-x-4">
-                  <NavItemLG delay={0} label="Recipes" link="" active icon={<MdFoodBank />} />
-                  <NavItemLG delay={2} label="Feeds" link="/feeds" icon={<MdOutlineDynamicFeed />} />
-                  <NavItemLG delay={3} label="Tips" link="/tips" icon={<MdOutlineTipsAndUpdates />} />
+                  <SearchBar />
                 </div>
               </div>
               <ThemeToggler />
