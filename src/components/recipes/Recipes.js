@@ -47,7 +47,7 @@ const Recipes = () => {
   return (
     <>
       <Tags />
-      {searching ? <SearchResultsHeader /> : null}
+      {searching && !searchLoading ? <SearchResultsHeader /> : null}
       <div className="relative z-10 flex center gap-5 wrap pb-2 pt-3 mx-2 overflow-hidden">
         {isLoading ? (
           <div className="relative flex center flex-col" style={{ minHeight: '50vh' }}>
@@ -83,9 +83,13 @@ const Recipes = () => {
           <>
             {searching ? (
               <>
-                {searchResults?.map((key, index) => (
-                  <RecipeCard key={key.id} recipe={key} index={index} />
-                ))}
+                {searchLoading ? null : (
+                  <>
+                    {searchResults?.map((key, index) => (
+                      <RecipeCard key={key.id} recipe={key} index={index} />
+                    ))}
+                  </>
+                )}
                 {!searchLoading && searchResults?.length < 1 ? (
                   <p>No results found</p>
                 ) : null}
