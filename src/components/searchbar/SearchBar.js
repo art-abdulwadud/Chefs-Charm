@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaArrowsSpin } from 'react-icons/fa6';
 import { useAtom } from 'jotai';
 import axios from 'axios';
 import { searchResultsAtom, searchingAtom } from '../layout';
@@ -32,6 +33,7 @@ const SearchBar = () => {
         const response = await axios.request(options);
         setSearchResults(response.data?.results || null);
         console.log(response.data?.results, searchKeyword);
+        setIsLoading(false);
         return response.data?.results;
       }
       setIsLoading(false);
@@ -44,7 +46,13 @@ const SearchBar = () => {
   };
   return (
     <>
-      {isLoading ? <span className="absolute top-0 right-0 z-50">Loading</span> : null}
+      {isLoading
+        ? (
+          <span className="absolute top-0 right-2 z-50 h-[38px] flex items-center text-xl pt-2">
+            <FaArrowsSpin className="animate-spin text-gray-500" />
+          </span>
+        )
+        : null}
       <form className="relative w-[100%]" onSubmit={handleSubmit}>
         <input
           type="text"
