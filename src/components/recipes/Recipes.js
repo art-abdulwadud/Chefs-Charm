@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { atom, useAtom } from 'jotai';
 import BarLoader from 'react-spinners/BarLoader';
 import RecipeCard from './RecipeCard';
-import { darkModeAtom, searchResultsAtom, searchingAtom } from '../layout';
+import { darkModeAtom, searchLoadingAtom, searchResultsAtom, searchingAtom } from '../layout';
 import Tags from './recipeCard/tags/Tags';
 import SearchResultsHeader from './SearchResultsHeader';
 // import { dummyData } from './dummyData';
@@ -19,6 +19,7 @@ const Recipes = () => {
   const [selectedTag] = useAtom(selectedTagAtom);
   const [searching] = useAtom(searchingAtom);
   const [searchResults] = useAtom(searchResultsAtom);
+  const [searchLoading] = useAtom(searchLoadingAtom);
   const { data, isLoading } = useQuery(['fetchRecipes', selectedTag], async () => {
     try {
       const options = {
@@ -85,9 +86,9 @@ const Recipes = () => {
                 {searchResults?.map((key, index) => (
                   <RecipeCard key={key.id} recipe={key} index={index} />
                 ))}
-                {searchResults?.length > 0 ? null : (
+                {!searchLoading && searchResults?.length < 1 ? (
                   <p>No results found</p>
-                )}
+                ) : null}
               </>
             ) : (
               <>
