@@ -81,6 +81,7 @@ const Recipes = () => {
             )}
           </>
         )}
+        {isFetchingNextPage ? <PreLoader /> : null}
       </div>
       {hasNextPage && !searching ? (
         <FetchMoreButton data={data?.pages?.map((recipes) => recipes)} recipeCount={recipeCount} setSize={setSize} size={size} fetchNextPage={fetchNextPage} isFetchingNextPage={isFetchingNextPage} />
