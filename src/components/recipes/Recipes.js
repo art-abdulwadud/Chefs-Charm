@@ -79,13 +79,12 @@ const Recipes = () => {
                 {data?.pages?.map((recipes) => recipes.map((key, index) => (
                   <RecipeCard key={key.id} recipe={key} index={index} />
                 )))}
-                {console.log(data.pages)}
               </>
             )}
           </>
         )}
-        {isFetchingNextPage ? <PreLoader /> : null}
       </div>
+      {isFetchingNextPage ? <PreLoader /> : null}
       {hasNextPage && !searching ? (
         <FetchMoreButton dataLength={dataLength} recipeCount={recipeCount} setSize={setSize} size={size} fetchNextPage={fetchNextPage} isFetchingNextPage={isFetchingNextPage} />
       ) : null}
