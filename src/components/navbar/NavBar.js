@@ -29,7 +29,7 @@ const NavBar = () => {
             <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
               <NavLogo />
               <div className="hidden md:mx-auto md:block w-[60%]">
-                <div className="flex items-end h-[6vh]">
+                <div className="flex items-end h-[6vh] relative">
                   <SearchBar />
                 </div>
               </div>

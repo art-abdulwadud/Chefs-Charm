@@ -20,6 +20,12 @@ export const isBrowser = typeof window !== 'undefined';
 // Initially, its value is determined by darkMode item in localStorage
 export const darkModeAtom = atom(isBrowser && window.localStorage.getItem('darkMode')?.toString() === 'true');
 
+// A global state for determining whether search is activated
+export const searchingAtom = atom(false);
+
+// A global state for storing search results
+export const searchResultsAtom = atom(null);
+
 const Layout = ({ children }) => {
   const [darkMode] = useAtom(darkModeAtom);
   const setPatterBgHeight = () => {
