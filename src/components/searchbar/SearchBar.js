@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 import { FaArrowsSpin } from 'react-icons/fa6';
+import { FaSearch } from 'react-icons/fa';
 import { useAtom } from 'jotai';
 import axios from 'axios';
 import { searchResultsAtom, searchingAtom } from '../layout';
@@ -32,7 +34,6 @@ const SearchBar = () => {
         };
         const response = await axios.request(options);
         setSearchResults(response.data?.results || null);
-        console.log(response.data?.results, searchKeyword);
         setIsLoading(false);
         return response.data?.results;
       }
@@ -45,23 +46,29 @@ const SearchBar = () => {
     }
   };
   return (
-    <>
+    <form className="relative w-[100%]" onSubmit={handleSubmit}>
       {isLoading
         ? (
-          <span className="absolute top-0 right-2 z-50 h-[38px] flex items-center text-xl pt-2">
+          <span className="absolute top-0 right-2 z-50 h-[38px] flex items-center text-xl">
             <FaArrowsSpin className="animate-spin text-gray-500" />
           </span>
         )
-        : null}
-      <form className="relative w-[100%]" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="w-[100%] rounded-full h-[38px] px-3 outline-none relative"
-          placeholder="Search Recipe e.g Cookies Recipe"
-          onChange={(e) => e.target.value.length > 3 ? setSearchKeyword(e.target.value) : null}
-        />
-      </form>
-    </>
+        : (
+          <button
+            type="submit"
+            className="absolute top-0 right-2 z-50 h-[38px] flex items-center text-xl"
+          >
+            <FaSearch className="text-gray-700" />
+          </button>
+        )}
+
+      <input
+        type="text"
+        className="w-[100%] rounded-full h-[38px] px-3 outline-none relative pr-8"
+        placeholder="Search Recipe e.g Cookies Recipe"
+        onChange={(e) => e.target.value.length > 3 ? setSearchKeyword(e.target.value) : null}
+      />
+    </form>
   );
 };
 
