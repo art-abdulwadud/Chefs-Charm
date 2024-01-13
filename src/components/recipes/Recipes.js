@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { atom, useAtom } from 'jotai';
 import BarLoader from 'react-spinners/BarLoader';
 import RecipeCard from './RecipeCard';
-import { darkModeAtom } from '../layout';
+import { darkModeAtom, searchResultsAtom, searchingAtom } from '../layout';
 import Tags from './recipeCard/tags/Tags';
 // import { dummyData } from './dummyData';
 
@@ -16,6 +16,8 @@ const Recipes = () => {
   const [darkMode] = useAtom(darkModeAtom);
   const [recipeCount, setRecipeCount] = useAtom(recipeCountAtom);
   const [selectedTag] = useAtom(selectedTagAtom);
+  const [searching] = useAtom(searchingAtom);
+  const [searchResults] = useAtom(searchResultsAtom);
   const { data, isLoading } = useQuery(['fetchRecipes', selectedTag], async () => {
     try {
       const options = {
@@ -76,13 +78,26 @@ const Recipes = () => {
           </div>
         ) : (
           <>
-            {data?.map((key, index) => (
-              <RecipeCard key={key.id} recipe={key} index={index} />
-            ))}
+            {searching ? (
+              <>
+                {searchResults?.map((key, index) => (
+                  <RecipeCard key={key.id} recipe={key} index={index} />
+                ))}
+                {searchResults?.length > 0 ? null : (
+                  <p>No results found</p>
+                )}
+              </>
+            ) : (
+              <>
+                {data?.map((key, index) => (
+                  <RecipeCard key={key.id} recipe={key} index={index} />
+                ))}
+              </>
+            )}
           </>
         )}
       </div>
-      {!isLoading && recipeCount ? (
+      {!isLoading && recipeCount && !searching ? (
         <div className="relative z-20 py-3 flex center">
           <button
             type="button"
