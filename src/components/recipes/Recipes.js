@@ -22,7 +22,7 @@ const Recipes = () => {
   const [searchLoading] = useAtom(searchLoadingAtom);
   const [size, setSize] = useState(21);
   const { data, isFetching, isFetchingNextPage, hasNextPage, fetchNextPage } = useInfiniteQuery({
-    queryKey: 'fetchRecipes',
+    queryKey: ['fetchRecipes', selectedTag],
     queryFn: async ({ pageParam }) => {
       try {
         const options = {
@@ -50,6 +50,8 @@ const Recipes = () => {
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage + 1
   });
+  let dataLength = 0;
+  data?.pages?.forEach((page) => dataLength += page.length);
   return (
     <>
       <Tags />
@@ -77,6 +79,7 @@ const Recipes = () => {
                 {data?.pages?.map((recipes) => recipes.map((key, index) => (
                   <RecipeCard key={key.id} recipe={key} index={index} />
                 )))}
+                {console.log(data.pages)}
               </>
             )}
           </>
@@ -84,7 +87,7 @@ const Recipes = () => {
         {isFetchingNextPage ? <PreLoader /> : null}
       </div>
       {hasNextPage && !searching ? (
-        <FetchMoreButton data={data?.pages?.map((recipes) => recipes)} recipeCount={recipeCount} setSize={setSize} size={size} fetchNextPage={fetchNextPage} isFetchingNextPage={isFetchingNextPage} />
+        <FetchMoreButton dataLength={dataLength} recipeCount={recipeCount} setSize={setSize} size={size} fetchNextPage={fetchNextPage} isFetchingNextPage={isFetchingNextPage} />
       ) : null}
     </>
   );

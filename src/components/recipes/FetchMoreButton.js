@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FetchMoreButton = ({ data, recipeCount, fetchNextPage }) => {
+const FetchMoreButton = ({ dataLength, recipeCount, fetchNextPage }) => {
   return (
     <div className="relative z-20 py-3 flex center">
       <button
@@ -10,7 +10,7 @@ const FetchMoreButton = ({ data, recipeCount, fetchNextPage }) => {
         `}
         onClick={() => fetchNextPage()}
       >
-        <span className="text-xs">{data?.length} / {recipeCount}</span>
+        <span className="text-xs">{dataLength} / {recipeCount}</span>
         <span className="text-lg">Show More</span>
       </button>
     </div>
