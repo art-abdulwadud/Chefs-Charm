@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FetchMoreButton = ({ data, recipeCount, setSize, size }) => {
+const FetchMoreButton = ({ data, recipeCount, fetchNextPage }) => {
   return (
     <div className="relative z-20 py-3 flex center">
       <button
@@ -8,7 +8,7 @@ const FetchMoreButton = ({ data, recipeCount, setSize, size }) => {
         className={`flex flex-col center
         border-none py-2 px-4 rounded-2xl bg-amber-400 text-gray-800
         `}
-        onClick={() => setSize(size + 21)}
+        onClick={() => fetchNextPage()}
       >
         <span className="text-xs">{data?.length} / {recipeCount}</span>
         <span className="text-lg">Show More</span>

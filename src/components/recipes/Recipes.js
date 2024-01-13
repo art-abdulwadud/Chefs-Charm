@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { atom, useAtom } from 'jotai';
 import RecipeCard from './RecipeCard';
 import { searchLoadingAtom, searchResultsAtom, searchingAtom } from '../layout';
@@ -21,36 +21,41 @@ const Recipes = () => {
   const [searchResults] = useAtom(searchResultsAtom);
   const [searchLoading] = useAtom(searchLoadingAtom);
   const [size, setSize] = useState(21);
-  const { data, isLoading } = useQuery(['fetchRecipes', selectedTag, size], async () => {
-    try {
-      const options = {
-        method: 'GET',
-        url: 'https://tasty.p.rapidapi.com/recipes/list',
-        params: {
-          from: '0',
-          size: `${size}`,
-          ...selectedTag ? { tags: selectedTag } : {}
-        },
-        headers: {
-          'X-RapidAPI-Key': process.env.GATSBY_API_KEY,
-          'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
-        }
-      };
-      const response = await axios.request(options);
-      setRecipeCount(response.data?.count || 800);
-      return response.data?.results;
-      // return dummyData; This is for Testing only
-    } catch (error) {
-      console.log(error.message);
-      return [];
-    }
+  const { data, isFetching, isFetchingNextPage, hasNextPage, fetchNextPage } = useInfiniteQuery({
+    queryKey: 'fetchRecipes',
+    queryFn: async ({ pageParam }) => {
+      try {
+        const options = {
+          method: 'GET',
+          url: 'https://tasty.p.rapidapi.com/recipes/list',
+          params: {
+            from: '0',
+            size: `${pageParam * 21}`,
+            ...selectedTag ? { tags: selectedTag } : {}
+          },
+          headers: {
+            'X-RapidAPI-Key': process.env.GATSBY_API_KEY,
+            'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
+          }
+        };
+        const response = await axios.request(options);
+        setRecipeCount(response.data?.count || 800);
+        return response.data?.results;
+        // return dummyData; This is for Testing only
+      } catch (error) {
+        console.log(error.message);
+        return [];
+      }
+    },
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => lastPage + 1
   });
   return (
     <>
       <Tags />
       {searching && !searchLoading ? <SearchResultsHeader /> : null}
       <div className="relative z-10 flex center gap-5 wrap pb-2 pt-3 mx-2 overflow-hidden">
-        {isLoading ? (
+        {isFetching && !isFetchingNextPage ? (
           <PreLoader />
         ) : (
           <>
@@ -69,17 +74,16 @@ const Recipes = () => {
               </>
             ) : (
               <>
-                {data?.map((key, index) => (
+                {data?.pages?.map((recipes) => recipes.map((key, index) => (
                   <RecipeCard key={key.id} recipe={key} index={index} />
-                ))}
+                )))}
               </>
             )}
           </>
         )}
       </div>
-      {console.log(isLoading, recipeCount, searching)}
-      {!isLoading && recipeCount && !searching ? (
-        <FetchMoreButton data={data} recipeCount={recipeCount} setSize={setSize} size={size} />
+      {hasNextPage && !searching ? (
+        <FetchMoreButton data={data?.pages?.map((recipes) => recipes)} recipeCount={recipeCount} setSize={setSize} size={size} fetchNextPage={fetchNextPage} isFetchingNextPage={isFetchingNextPage} />
       ) : null}
     </>
   );
