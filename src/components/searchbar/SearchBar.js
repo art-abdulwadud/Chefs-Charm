@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaArrowsSpin } from 'react-icons/fa6';
 import { FaSearch } from 'react-icons/fa';
 import { useAtom } from 'jotai';
@@ -8,7 +8,7 @@ import { searchResultsAtom, searchingAtom } from '../layout';
 
 const SearchBar = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
-  const [, setSearching] = useAtom(searchingAtom);
+  const [searching, setSearching] = useAtom(searchingAtom);
   const [, setSearchResults] = useAtom(searchResultsAtom);
   const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async (e) => {
@@ -45,6 +45,9 @@ const SearchBar = () => {
       return [];
     }
   };
+  useEffect(() => {
+    if (!searching) setSearchKeyword('');
+  }, [searching]);
   return (
     <form className="relative w-[100%]" onSubmit={handleSubmit}>
       {isLoading
@@ -66,7 +69,8 @@ const SearchBar = () => {
         type="text"
         className="w-[100%] rounded-full h-[38px] px-3 outline-none relative pr-8"
         placeholder="Search Recipe e.g Cookies Recipe"
-        onChange={(e) => e.target.value.length > 3 ? setSearchKeyword(e.target.value) : null}
+        value={searchKeyword}
+        onChange={(e) => setSearchKeyword(e.target.value)}
       />
     </form>
   );
