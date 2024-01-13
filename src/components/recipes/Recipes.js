@@ -6,6 +6,7 @@ import BarLoader from 'react-spinners/BarLoader';
 import RecipeCard from './RecipeCard';
 import { darkModeAtom, searchResultsAtom, searchingAtom } from '../layout';
 import Tags from './recipeCard/tags/Tags';
+import SearchResultsHeader from './SearchResultsHeader';
 // import { dummyData } from './dummyData';
 
 export const selectedRecipeAtom = atom(null);
@@ -45,6 +46,7 @@ const Recipes = () => {
   return (
     <>
       <Tags />
+      {searching ? <SearchResultsHeader /> : null}
       <div className="relative z-10 flex center gap-5 wrap pb-2 pt-3 mx-2 overflow-hidden">
         {isLoading ? (
           <div className="relative flex center flex-col" style={{ minHeight: '50vh' }}>
