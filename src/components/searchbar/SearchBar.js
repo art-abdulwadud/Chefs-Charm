@@ -18,7 +18,7 @@ const SearchBar = () => {
           method: 'GET',
           url: 'https://tasty.p.rapidapi.com/recipes/auto-complete',
           params: {
-            prefix: 'chicken soup'
+            prefix: searchKeyword
           },
           headers: {
             'X-RapidAPI-Key': process.env.GATSBY_API_KEY,
@@ -27,6 +27,7 @@ const SearchBar = () => {
         };
         const response = await axios.request(options);
         setSearchResults(response.data?.results || null);
+        console.log(response.data?.results, searchKeyword);
         return response.data?.results;
       }
       return [];
@@ -42,7 +43,7 @@ const SearchBar = () => {
         type="text"
         className="w-[100%] rounded-full h-[38px] px-3 outline-none relative"
         placeholder="Search"
-        onChange={(e) => setSearchKeyword(e.target.value)}
+        onChange={(e) => e.target.value.length > 3 ? setSearchKeyword(e.target.value) : null}
       />
     </>
   );
