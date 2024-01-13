@@ -2,11 +2,11 @@ import axios from 'axios';
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { atom, useAtom } from 'jotai';
-import BarLoader from 'react-spinners/BarLoader';
 import RecipeCard from './RecipeCard';
-import { darkModeAtom, searchLoadingAtom, searchResultsAtom, searchingAtom } from '../layout';
+import { searchLoadingAtom, searchResultsAtom, searchingAtom } from '../layout';
 import Tags from './recipeCard/tags/Tags';
 import SearchResultsHeader from './SearchResultsHeader';
+import PreLoader from './PreLoader';
 // import { dummyData } from './dummyData';
 
 export const selectedRecipeAtom = atom(null);
@@ -14,7 +14,6 @@ export const selectedTagAtom = atom('brunch');
 export const recipeCountAtom = atom(null);
 
 const Recipes = () => {
-  const [darkMode] = useAtom(darkModeAtom);
   const [recipeCount, setRecipeCount] = useAtom(recipeCountAtom);
   const [selectedTag] = useAtom(selectedTagAtom);
   const [searching] = useAtom(searchingAtom);
@@ -50,35 +49,7 @@ const Recipes = () => {
       {searching && !searchLoading ? <SearchResultsHeader /> : null}
       <div className="relative z-10 flex center gap-5 wrap pb-2 pt-3 mx-2 overflow-hidden">
         {isLoading ? (
-          <div className="relative flex center flex-col" style={{ minHeight: '50vh' }}>
-            <img
-              src="/logo-tp.png"
-              alt="logo"
-              style={{ height: '200px',
-                width: '200px',
-                animationIterationCount: 'infinite',
-                animationDirection: 'alternate' }}
-              className="relative mb-2 animate__animated animate__bounce animate__slower"
-            />
-            <BarLoader
-              className="animate__animated animate__fadeIn"
-              cssOverride={{
-                width: '200px',
-                backgroundColor: '#Fbbf24',
-                borderRadius: '10px'
-              }}
-              color={darkMode ? '#374151' : '#f9fafb'}
-            />
-            <span
-              className="text-amber-400 animate__animated animate__flash animate__slower"
-              style={{
-                animationIterationCount: 'infinite',
-                animationDirection: 'alternate'
-              }}
-            >
-              Just a sec 😋
-            </span>
-          </div>
+          <PreLoader />
         ) : (
           <>
             {searching ? (
