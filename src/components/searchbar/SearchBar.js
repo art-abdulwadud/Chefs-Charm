@@ -4,13 +4,13 @@ import { FaArrowsSpin } from 'react-icons/fa6';
 import { FaSearch } from 'react-icons/fa';
 import { useAtom } from 'jotai';
 import axios from 'axios';
-import { searchResultsAtom, searchingAtom } from '../layout';
+import { searchLoadingAtom, searchResultsAtom, searchingAtom } from '../layout';
 
 const SearchBar = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [searching, setSearching] = useAtom(searchingAtom);
   const [, setSearchResults] = useAtom(searchResultsAtom);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useAtom(searchLoadingAtom);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
