@@ -1,10 +1,11 @@
 import { useAtom } from 'jotai';
 import React from 'react';
 import { FaRegTimesCircle } from 'react-icons/fa';
-import { searchResultsAtom } from '../layout';
+import { searchResultsAtom, searchingAtom } from '../layout';
 
 const SearchResultsHeader = () => {
   const [searchResults] = useAtom(searchResultsAtom);
+  const [, setSearching] = useAtom(searchingAtom);
   return (
     <div className="relative z-10 flex center flex-col pb-2 pt-3 mx-2 overflow-hidden animate__animated animate__fadeIn">
       <div className="flex center flex-col bg-amber-400 dark:text-gray-800 text-white p-2">
@@ -15,6 +16,7 @@ const SearchResultsHeader = () => {
           type="button"
           className="dark:bg-gray-800 bg-white text-amber-400 flex items-center text-sm font-bold gap-1
           px-3 py-1 mt-2"
+          onClick={() => setSearching(false)}
         >
           Clear Filter
           <FaRegTimesCircle />
