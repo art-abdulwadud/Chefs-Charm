@@ -16,7 +16,7 @@ const Recipes = () => {
   const [darkMode] = useAtom(darkModeAtom);
   const [recipeCount, setRecipeCount] = useAtom(recipeCountAtom);
   const [selectedTag] = useAtom(selectedTagAtom);
-  const { data, isLoading } = useQuery(['fetchUsers', selectedTag], async () => {
+  const { data, isLoading } = useQuery(['fetchRecipes', selectedTag], async () => {
     try {
       const options = {
         method: 'GET',
