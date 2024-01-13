@@ -7,6 +7,7 @@ import { searchLoadingAtom, searchResultsAtom, searchingAtom } from '../layout';
 import Tags from './recipeCard/tags/Tags';
 import SearchResultsHeader from './SearchResultsHeader';
 import PreLoader from './PreLoader';
+import FetchMoreButton from './FetchMoreButton';
 // import { dummyData } from './dummyData';
 
 export const selectedRecipeAtom = atom(null);
@@ -37,7 +38,7 @@ const Recipes = () => {
       const response = await axios.request(options);
       setRecipeCount(response.data?.count || null);
       return response.data?.results;
-      // return dummyData;
+      // return dummyData; This is for Testing only
     } catch (error) {
       console.log(error.message);
       return [];
@@ -76,17 +77,7 @@ const Recipes = () => {
         )}
       </div>
       {!isLoading && recipeCount && !searching ? (
-        <div className="relative z-20 py-3 flex center">
-          <button
-            type="button"
-            className={`flex flex-col center
-        border-none py-2 px-4 rounded-2xl bg-amber-400 text-gray-800
-        `}
-          >
-            <span className="text-xs">{data?.length} / {recipeCount}</span>
-            <span className="text-lg">Show More</span>
-          </button>
-        </div>
+        <FetchMoreButton data={data} recipeCount={recipeCount} />
       ) : null}
     </>
   );
