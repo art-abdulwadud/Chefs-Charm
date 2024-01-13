@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { atom, useAtom } from 'jotai';
 import RecipeCard from './RecipeCard';
@@ -20,14 +20,15 @@ const Recipes = () => {
   const [searching] = useAtom(searchingAtom);
   const [searchResults] = useAtom(searchResultsAtom);
   const [searchLoading] = useAtom(searchLoadingAtom);
-  const { data, isLoading } = useQuery(['fetchRecipes', selectedTag], async () => {
+  const [size, setSize] = useState(21);
+  const { data, isLoading } = useQuery(['fetchRecipes', selectedTag, size], async () => {
     try {
       const options = {
         method: 'GET',
         url: 'https://tasty.p.rapidapi.com/recipes/list',
         params: {
           from: '0',
-          size: '21',
+          size: `${size}`,
           ...selectedTag ? { tags: selectedTag } : {}
         },
         headers: {
@@ -36,7 +37,7 @@ const Recipes = () => {
         }
       };
       const response = await axios.request(options);
-      setRecipeCount(response.data?.count || null);
+      setRecipeCount(response.data?.count || 800);
       return response.data?.results;
       // return dummyData; This is for Testing only
     } catch (error) {
@@ -76,8 +77,9 @@ const Recipes = () => {
           </>
         )}
       </div>
+      {console.log(isLoading, recipeCount, searching)}
       {!isLoading && recipeCount && !searching ? (
-        <FetchMoreButton data={data} recipeCount={recipeCount} />
+        <FetchMoreButton data={data} recipeCount={recipeCount} setSize={setSize} size={size} />
       ) : null}
     </>
   );
